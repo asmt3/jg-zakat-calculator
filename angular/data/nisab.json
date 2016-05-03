@@ -1,0 +1,43 @@
+{
+	"timestamp": 10000000,
+	"currencies": [
+
+
+		{
+			"name": "GBP",
+			"threshold": 100
+		},
+		{
+			"name": "USD",
+			"threshold": 100
+		},
+		{
+			"name": "EUR",
+			"threshold": 100
+		},
+		{
+			"name": "HKD",
+			"threshold": 100
+		},
+		{
+			"name": "SGD",
+			"threshold": 100
+		},
+		{
+			"name": "CAD",
+			"threshold": 100
+		},
+		{
+			"name": "AED",
+			"threshold": 100
+		},
+		{
+			"name": "AUD",
+			"threshold": 100
+		},
+		{
+			"name": "ZAR",
+			"threshold": 100
+		}
+	]
+}

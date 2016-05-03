@@ -1,0 +1,469 @@
+<html ng-app="zakat">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Zakat Calc</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+	
+	<script src="main.js"></script>
+	<script src="controllers/zakatController.js"></script>
+
+</head>
+<body>
+<div class="container-fluid">
+
+
+<div ng-controller="zakatController">
+
+	<h1>Zakat Calculator</h1>
+
+
+	<!-- Show until Nisab values have been loaded -->
+	<div ng-show=" !nisab ">
+		<p>Loading Nisab</p>
+	</div>
+
+	<!-- Show once Nisab values have been loaded -->
+	<div ng-show=" nisab ">
+
+		<h2>Choose your currency</h2>
+
+		<div class="btn-group">
+
+			<label 
+				ng-repeat = "currency in nisab.currencies" 
+				class="btn btn-success" 
+				ng-model="$parent.selectedCurrency"
+				uib-btn-radio="{{currency}}">
+				{{currency.name}}
+			</label>
+			
+	    </div>
+
+	    <!-- Calculator Form -->
+
+
+		<form class="form-horizontal" ng-show=" selectedCurrency ">
+
+			<p>Your assets and liabilities </p>
+
+		<!-- Value of Gold &amp; Silver you possess -->
+		<div class="form-group">
+			<label 
+				class="control-label 
+				col-md-6" for="gold-silver">
+				Value of Gold &amp; Silver you possess
+			</label>
+
+			<div class="col-md-6">
+
+				<div class="input-group">
+			    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
+					<input
+						ng-change="updateZakatDue()" 
+						type="number" 
+						class="form-control"
+						id="gold-silver"
+						ng-model="formData.goldSilver">
+
+				</div>
+			</div>
+		</div>
+
+
+		  <!-- Cash at Home & Bank Accounts -->
+			<div class="form-group">
+			    <label 
+			    	class="control-label 
+			    	col-md-6" for="cash">
+					Cash at Home &amp; Bank Accounts
+				</label>
+
+			    <div class="col-md-6">
+			    	<div class="input-group">
+			    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
+				      <input
+				      	ng-change="updateZakatDue()" 
+				      	type="number" 
+				      	class="form-control"
+				      	id="cash"
+				      	ng-model="formData.cash">
+			      	</div>
+			    </div>
+			  </div>
+
+
+
+	<!-- Other Savings -->
+
+
+
+
+			<div class="form-group">
+			    <label 
+			    	class="control-label 
+			    	col-md-6" for="other-savings">
+					Other Savings
+				</label>
+
+			    <div class="col-md-6">
+			    	<div class="input-group">
+			    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
+				      <input
+				      	ng-change="updateZakatDue()" 
+				      	type="number" 
+				      	class="form-control"
+				      	id="other-savings"
+				      	ng-model="formData.otherSavings">
+				      </div>
+			      
+			    </div>
+			  </div>
+
+
+
+
+
+
+	<!-- Investment & Share Values -->
+
+
+
+
+			<div class="form-group">
+			    <label 
+			    	class="control-label 
+			    	col-md-6" for="investment">
+					Investment &amp; Share Values
+				</label>
+
+			    <div class="col-md-6">
+			    	<div class="input-group">
+			    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
+				      <input
+				      	ng-change="updateZakatDue()" 
+				      	type="number" 
+				      	class="form-control"
+				      	id="investment"
+				      	ng-model="formData.investment">
+				      </div>
+			      
+			    </div>
+			  </div>
+
+
+
+
+
+
+	<!-- Money owed to you -->
+
+
+
+
+			<div class="form-group">
+			    <label 
+			    	class="control-label 
+			    	col-md-6" for="owed-in">
+					Money owed to you
+				</label>
+
+			    <div class="col-md-6">
+			    	<div class="input-group">
+			    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
+				      <input
+				      	ng-change="updateZakatDue()" 
+				      	type="number" 
+				      	class="form-control"
+				      	id="owed-in"
+				      	ng-model="formData.owedIn"
+				      	>
+			      	</div>
+			    </div>
+			  </div>
+
+
+
+
+
+
+	<!-- Stock Value -->
+
+
+
+
+			<div class="form-group">
+			    <label 
+			    	class="control-label 
+			    	col-md-6" for="stock-value">
+					Stock Value
+				</label>
+
+			    <div class="col-md-6">
+			    	<div class="input-group">
+			    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
+			      <input
+			      	ng-change="updateZakatDue()" 
+			      	type="number" 
+			      	class="form-control"
+			      	id="stock-value"
+			      	ng-model="formData.stockValue">
+			    </div>
+			  </div>
+			  </div>
+
+
+
+
+
+
+	<!-- Money You Owe -->
+
+
+			<div class="form-group">
+			    <label 
+			    	class="control-label 
+			    	col-md-6" for="owed-out">
+					Money You Owe
+				</label>
+
+			    <div class="col-md-6">
+			    	<div class="input-group">
+			    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
+			      <input
+			      	ng-change="updateZakatDue()" 
+			      	type="number" 
+			      	class="form-control"
+			      	id="owed-out"
+			      	ng-model="formData.owedOut"
+			      	>
+			    </div>
+			  </div>
+			  </div>
+
+
+
+
+
+
+	<!-- Other Outgoings Due -->
+
+
+
+
+			<div class="form-group">
+			    <label 
+			    	class="control-label 
+			    	col-md-6" for="other-outgoings-due">
+					Other Outgoings Due
+				</label>
+
+			    <div class="col-md-6">
+			    	<div class="input-group">
+			    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
+			      <input
+			      	ng-change="updateZakatDue()" 
+			      	type="number" 
+			      	class="form-control"
+			      	id="other-outgoings-due"
+			      	ng-model="formData.otherOutgoingsDue">
+			      
+			    </div>
+			  </div>
+			  </div>
+
+
+
+
+
+
+	<!-- Net Assets -->
+
+
+
+
+			<div class="form-group">
+			    <label 
+			    	class="control-label 
+			    	col-md-6" for="net-assets">
+					Net Assets
+				</label>
+
+			    <div class="col-md-6">
+			    	<div class="input-group">
+			    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
+			      <input
+			      	ng-change="updateZakatDue()" 
+			      	type="number" 
+			      	readonly="readonly"
+			      	class="form-control"
+			      	ng-model="formData.netAssets" 
+			      	id="net-assets">
+			    </div>
+			</div>
+			</div>
+
+	<!-- Suggested Nisab Threshold -->
+
+			<div class="form-group">
+			    <label 
+			    	class="control-label 
+			    	col-md-6" for="nisab-threshold">
+					Suggested Nisab Threshold
+				</label>
+
+			    <div class="col-md-6">
+			    	<div class="input-group">
+			    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
+			      <input 
+			      	type="number" 
+			      	readonly="readonly"
+			      	class="form-control"
+			      	ng-model="selectedCurrency.threshold"
+			      	id="nisab-threshold">
+			    </div>
+			</div>
+			</div>
+
+	<!-- Use Custom Nisab -->
+
+			<div class="form-group">
+			    <label 
+			    	class="control-label 
+			    	col-md-6" for="nisab-threshold-custom">
+					Nisab Threshold (Custom)
+				</label>
+
+			    <div class="col-md-6">
+			    	<div class="input-group">
+
+						<span class="input-group-addon">
+							<input 
+								type="checkbox" 
+								ng-model="formData.useCustomNisabThreshold"
+								ng-change="updateZakatDue()" 
+								aria-label="Use Custom Nisab Threshold">
+						</span>
+
+				    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
+						<input 
+							type="number" 
+							ng-disabled=" !formData.useCustomNisabThreshold "
+							class="form-control"
+							ng-change="updateZakatDue()" 
+							ng-model="formData.customNisabThreshold"
+							id="nisab-threshold-custom">
+						</div>
+				</div>
+			</div>
+
+	<!-- Your Zakat Due -->
+
+			<div class="form-group">
+			    <label 
+			    	class="control-label 
+			    	col-md-6" for="zakat-due">
+					Your Zakat Due
+				</label>
+
+			    <div class="col-md-6">
+			    	<div class="input-group">
+			    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
+			      <input 
+			      	type="text" 
+			      	readonly="readonly"
+			      	class="form-control"
+			      	ng-model="formData.zakatDue"
+			      	id="zakat-due">
+			    </div>
+			</div>
+			</div>
+
+
+			<div class="col-md-6 col-md-offset-6">
+				<button 
+					type="submit" 
+					class="btn btn-default"
+					ng-click="showCharityPicker = true"
+					ng-show=" !showCharityPicker "
+				>
+					Choose a charity with JustGiving
+				</button>
+			</div>
+
+		</form>
+
+
+
+		<div ng-show=" showCharityPicker ">
+
+			<h2>Find your charity</h2>
+
+			<div class="form-group">
+
+				<div class="col-md-12">
+
+					<div class="input-group">
+				    	<div class="input-group-addon">Search Justgiving:</div>
+						
+							<input 
+								class="form-control"
+								charity-search 
+								ng-model="charityQuery"
+								ng-change="searchCharities()"
+								type="text" 
+								placeholder="Search for a charity"
+							>
+
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+			<div class="charity-search-results">
+				<table class="table table-striped">
+				 
+				    <tr ng-repeat = "charity in charities">
+						<td><img ng-src="{{ charity.logoUrl }}" height="64"></td>
+						<td>{{ charity.name }}</td>
+						<td>
+
+							<a 
+								class="btn btn-default" 
+								ng-href="{{ charity.SDIurl }}" 
+								role="button"
+								>
+								Give with JustGiving
+							</a>
+						</td>
+				    </tr>
+				 </table>
+			 </div>
+
+			</div>
+		</div>
+
+
+
+
+    </div>
+
+
+
+</div>
+ 
+
+</body>
+</html>
