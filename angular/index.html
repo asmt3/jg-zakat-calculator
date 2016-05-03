@@ -24,7 +24,7 @@
 
 	<nav class="navbar navbar-default navbar-static-top">
 	  <div class="container">
-	      <h1>Zakat Calculator</h1>
+	      <h1>JustGiving Zakat Calculator</h1>
 	  </div>
 	</nav>
 
@@ -85,9 +85,6 @@
 				</div>
 			</div>
 
-
-			<p>Your assets and liabilities </p>
-
 			<!-- Value of Gold &amp; Silver you possess -->
 			<div class="form-group">
 				<label 
@@ -101,6 +98,7 @@
 					<div class="input-group">
 				    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
 						<input
+							select-on-click
 							ng-change="updateZakatDue()" 
 							type="number" 
 							class="form-control"
