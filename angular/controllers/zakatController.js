@@ -42,7 +42,7 @@ app.controller('zakatController', function ($scope, $http) {
 
 		// calculate value
 		$scope.formData.netAssets = 
-			+ (Number($scope.formData.goldSilver) || 0) // if no value, assume 0
+			+ (Number($scope.formData.goldSilver) || 0) // if NaN, assume 0
 			+ (Number($scope.formData.cash) || 0)
 			+ (Number($scope.formData.otherSavings) || 0)
 			+ (Number($scope.formData.investment) || 0)
@@ -103,7 +103,12 @@ app.controller('zakatController', function ($scope, $http) {
 		// load nisab values
 		var url = './data/nisab.json'
 		$http.get(url).success( function(response) {
+
+			// load nisab values
 			$scope.nisab = response
+
+			// set default currency as the first in the list
+			$scope.selectedCurrency = $scope.nisab.currencies[0]
 
 		})
 	}

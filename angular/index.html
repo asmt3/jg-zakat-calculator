@@ -19,12 +19,22 @@
 
 </head>
 <body>
+
+
+
+	<nav class="navbar navbar-default navbar-static-top">
+	  <div class="container">
+	      <h1>Zakat Calculator</h1>
+	  </div>
+	</nav>
+
+
 <div class="container-fluid">
 
 
 <div ng-controller="zakatController">
 
-	<h1>Zakat Calculator</h1>
+	
 
 
 	<!-- Show until Nisab values have been loaded -->
@@ -35,49 +45,71 @@
 	<!-- Show once Nisab values have been loaded -->
 	<div ng-show=" nisab ">
 
-		<h2>Choose your currency</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
 
-		<div class="btn-group">
+		<p>Nisab values correct as of {{nisab.timestamp_ms | date:'yyyy-MM-dd HH:mm:ss Z'}}</p>
 
-			<label 
-				ng-repeat = "currency in nisab.currencies" 
-				class="btn btn-success" 
-				ng-model="$parent.selectedCurrency"
-				uib-btn-radio="{{currency}}">
-				{{currency.name}}
-			</label>
-			
-	    </div>
+		
 
 	    <!-- Calculator Form -->
 
 
-		<form class="form-horizontal" ng-show=" selectedCurrency ">
+		<form class="form-horizontal">
+
+
+
+			<div class="form-group">
+				<label 
+					class="control-label 
+					col-md-6" for="currency">
+					Your currency
+				</label>
+
+				<div class="col-md-6">
+
+					<div class="btn-group">
+						<label 
+							ng-repeat="currency in nisab.currencies" 
+							class="btn btn-primary btn-xs" 
+							ng-model="$parent.selectedCurrency"
+							uib-btn-radio="{{currency}}">
+							{{currency.name}}
+						</label>
+						
+				    </div>
+				</div>
+			</div>
+
 
 			<p>Your assets and liabilities </p>
 
-		<!-- Value of Gold &amp; Silver you possess -->
-		<div class="form-group">
-			<label 
-				class="control-label 
-				col-md-6" for="gold-silver">
-				Value of Gold &amp; Silver you possess
-			</label>
+			<!-- Value of Gold &amp; Silver you possess -->
+			<div class="form-group">
+				<label 
+					class="control-label 
+					col-md-6" for="gold-silver">
+					Value of Gold &amp; Silver you possess
+				</label>
 
-			<div class="col-md-6">
+				<div class="col-md-6">
 
-				<div class="input-group">
-			    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
-					<input
-						ng-change="updateZakatDue()" 
-						type="number" 
-						class="form-control"
-						id="gold-silver"
-						ng-model="formData.goldSilver">
+					<div class="input-group">
+				    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
+						<input
+							ng-change="updateZakatDue()" 
+							type="number" 
+							class="form-control"
+							id="gold-silver"
+							ng-model="formData.goldSilver">
 
+					</div>
 				</div>
 			</div>
-		</div>
 
 
 		  <!-- Cash at Home & Bank Accounts -->
@@ -340,7 +372,7 @@
 			    <label 
 			    	class="control-label 
 			    	col-md-6" for="nisab-threshold-custom">
-					Nisab Threshold (Custom)
+					Override Custom Nisab Threshold
 				</label>
 
 			    <div class="col-md-6">
@@ -377,38 +409,29 @@
 
 			    <div class="col-md-6">
 			    	<div class="input-group">
-			    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
-			      <input 
-			      	type="text" 
-			      	readonly="readonly"
-			      	class="form-control"
-			      	ng-model="formData.zakatDue"
-			      	id="zakat-due">
-			    </div>
-			</div>
-			</div>
-
-
-			<div class="col-md-6 col-md-offset-6">
-				<button 
-					type="submit" 
-					class="btn btn-default"
-					ng-click="showCharityPicker = true"
-					ng-show=" !showCharityPicker "
-				>
-					Choose a charity with JustGiving
-				</button>
+				    	<div class="input-group-addon">{{selectedCurrency.name}}</div>
+				      <input 
+				      	type="text" 
+				      	readonly="readonly"
+				      	class="form-control"
+				      	ng-model="formData.zakatDue"
+				      	id="zakat-due">
+				    </div>
+				</div>
 			</div>
 
-		</form>
 
-
-
-		<div ng-show=" showCharityPicker ">
-
-			<h2>Find your charity</h2>
+			<!-- Charity Search -->
 
 			<div class="form-group">
+
+
+
+				<label 
+			    	class="control-label 
+			    	col-md-12">
+					Choose your charity
+				</label>
 
 				<div class="col-md-12">
 
@@ -426,33 +449,39 @@
 
 					</div>
 				</div>
+
+				<div class="col-md-12 charity-search-results">
+					<table class="table table-striped">
+					 
+					    <tr ng-repeat = "charity in charities">
+							<td>
+								<img ng-src="{{ charity.logoUrl }}" width="64">
+							</td>
+							
+							<td>
+								{{ charity.name }}
+							</td>
+
+							<td>
+								<a 
+									class="btn btn-default" 
+									ng-href="{{ charity.SDIurl }}" 
+									role="button"
+									>
+									Give with JustGiving
+								</a>
+							</td>
+					    </tr>
+					 </table>
+				 </div>
 			</div>
 
 
 
 
+		</form>
 
-			<div class="charity-search-results">
-				<table class="table table-striped">
-				 
-				    <tr ng-repeat = "charity in charities">
-						<td><img ng-src="{{ charity.logoUrl }}" height="64"></td>
-						<td>{{ charity.name }}</td>
-						<td>
 
-							<a 
-								class="btn btn-default" 
-								ng-href="{{ charity.SDIurl }}" 
-								role="button"
-								>
-								Give with JustGiving
-							</a>
-						</td>
-				    </tr>
-				 </table>
-			 </div>
-
-			</div>
 		</div>
 
 
