@@ -6,6 +6,7 @@ Preparing AWS
 ===
 1. Create S3 Bucket eg. 
 	```zakat-dev-justgiving-com```
+
 2. Configure S3 CORS eg.
 	```
 	<CORSConfiguration>
@@ -15,6 +16,7 @@ Preparing AWS
 		</CORSRule>
 	</CORSConfiguration>
 	```
+
 3. Create an AWS role for the lambda function with a policy document as follows:
 
 ```
@@ -41,6 +43,8 @@ Preparing AWS
 
 Preparing the deploy
 ====
+0. In this directory execute ```npm install```
+
 1. Install node-lambda using ```npm install -g node-lambda```
 
 2. Create a file called ```.env``` in this folder using this template, filling in the values marked with ***
@@ -66,10 +70,7 @@ PACKAGE_DIRECTORY=build
 4. Deploy ```node-lambda deploy```
 5. Log into AWS Console for Lambda (https://eu-west-1.console.aws.amazon.com/lambda/)
 6. Find the function 'ZakatNisabPollAndSave'
-7. Click "Test". You should get a response like:
-```
-Execution result: succeeded
-```
+7. Click "Test". You should get a response "Execution result: succeeded"""
 
 Setting up scheduling
 ====
