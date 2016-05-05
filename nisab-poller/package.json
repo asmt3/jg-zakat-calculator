@@ -1,0 +1,23 @@
+{
+  "name": "nisab-poller",
+  "version": "0.0.1",
+  "description": "Polls nisab values and publishes to an S3 bucket",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asmt3/jg-zakat-calculator.git"
+  },
+  "author": "Alan Thomson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asmt3/jg-zakat-calculator/issues"
+  },
+  "homepage": "https://github.com/asmt3/jg-zakat-calculator#readme",
+  "dependencies": {
+    "aws-sdk": "^2.3.8",
+    "request": "^2.72.0"
+  }
+}

@@ -359,6 +359,7 @@
 			      	readonly="readonly"
 			      	class="form-control"
 			      	ng-model="selectedCurrency.threshold"
+			      	ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/"
 			      	id="nisab-threshold">
 			    </div>
 			</div>
@@ -453,7 +454,7 @@
 					 
 					    <tr ng-repeat = "charity in charities">
 							<td>
-								<img ng-src="{{ charity.logoUrl }}" width="64">
+								<img ng-src="{{ charity.logoUrl }}?template=size100x100" width="64">
 							</td>
 							
 							<td>

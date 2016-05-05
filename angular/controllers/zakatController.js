@@ -1,6 +1,7 @@
+var nisabSourceURL = 'https://s3-eu-west-1.amazonaws.com/zakat-dev-justgiving-com/nisab.json'
+
+
 app.controller('zakatController', function ($scope, $http) {
-
-
 
 	// to be loaded from remote source
 	$scope.nisab = false;
@@ -101,8 +102,9 @@ app.controller('zakatController', function ($scope, $http) {
 
 	function getNisabValuesByCurrency() {
 		// load nisab values
-		var url = './data/nisab.json'
-		$http.get(url).success( function(response) {
+		$http.get(nisabSourceURL).success( function(response) {
+
+			console.log(response)
 
 			// load nisab values
 			$scope.nisab = response
