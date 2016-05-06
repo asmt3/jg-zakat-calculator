@@ -118,9 +118,21 @@ textarea {
 .zk-form a.btn-primary {background:#677081; color:#EBEBEB; padding: 12px 80px; font-size: 16px; border:0;}
 .zk-calculation-result {margin-top:2em;}
 
+/*Stage 2*/
+.zk-suggested-charities {
 
-
-
+}
+.zk-suggested-charity {
+    border:1px solid #EBEBEB;
+    text-align: center;
+    border-radius: 3px;
+}
+.zk-suggested-charity .zk-inner {padding:25px 12px;}
+.zk-suggested-charity a.zk-charity-name {display: block;}
+.zk-suggested-charity img {width:110px; height:110px;}
+.zk-suggested-charity p {text-align: left; }
+.zk-suggested-charity p.zk-charity-desc {font-size:16px;}
+.zk-suggested-charity p.zk-charity-reg {font-size:13px;}
 
 
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="" ng-app="zakat">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -393,10 +393,41 @@
                 <!-- Stage 2: Select Charity -->
 
                 <div class="zk-stage-2">
-                    <h3>
-                        <span>2</span>
-                        Select one of the suggested charities or search for a cause you care about
-                    </h3>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <span class="zk-heading-circle">2</span>
+                        </div>
+                        <div class="col-sm-11">
+                            <h3>Select one of the suggested charities or search for a cause you care about</h3>
+                        </div>
+                    </div>
+
+
+                    <!-- Suggested Charities -->
+                    <div class="row zk-suggested-charities">
+                        <div 
+                            class="col-md-4 zk-suggested-charity"
+                            ng-repeat-n="3"
+                            >
+                            <div class="zk-inner">
+                                <img src="" class="zk-logo">
+                                <a class="zk-charity-name">
+                                    Charity Name
+                                </a>
+                                <p class="zk-charity-desc">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                </p>
+                                <p class="zk-charity-reg">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                </p>
+                                <a class="btn btn-default zk-cta">Donate</a>
+                            </div>
+                            
+                        </div>
+                    </div>
                 </div>
 
 
