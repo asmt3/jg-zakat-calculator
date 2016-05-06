@@ -1,6 +1,6 @@
 Deploying the Lambda function
 ===
-
+	scheduled task working? Thu May 05 16:41:57 GMT+630 2016
 
 Preparing AWS
 ===
