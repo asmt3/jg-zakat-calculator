@@ -96,7 +96,7 @@ textarea {
    ========================================================================== */
 
 /*General*/
-* { color:#6B7074 }
+* {font-family: Roboto}
 
 /* Header */
 .zk-banner {background:#677081; padding:80px;}
@@ -104,37 +104,93 @@ textarea {
 .zk-intro {background:#EBEBEB; padding:30px; text-align:center;}
 .zk-intro h2 {font-weight: normal; margin:0 auto 25px; color:#677081; }
 .zk-illustration {margin:0 0 35px;}
-.zk-cta a {background:#677081; color:#EBEBEB; padding: 12px 80px; font-size: 16px; border:0;}
+.zk-cta a {background:#FE6301; color:#EBEBEB; padding: 12px 80px; font-size: 16px; border:0;}
+.zk-cta a:hover,
+.zk-cta a:focus {background:#FE6301;}
 
-/*Main*/
-.zk-main .zk-heading-circle {border-radius: 50%; background:#677081; color:#EBEBEB; padding:12px 20px; font-size:28px;}
-.zk-main h3 {margin-top:10px;}
+/* Main */
+#zk-main { color:#6B7074; padding-bottom:80px;}
+#zk-main .stage-heading {margin-bottom: 20px; margin-top: 20px}
+#zk-main .zk-heading-circle {border-radius: 50%; background:#AC29B5; color:#EBEBEB; padding:7px 16px; font-size:28px;}
+#zk-main h3 {margin-top:8px;}
+#zk-main .form-group {padding:1em 0; font-size:1.1em;}
+#zk-main .input-group-addon {background:#fff; border-right:0; font-size:1.3em; color:#9B9B9B;}
+#zk-main .form-control { font-size:1.1em; }
+#zk-main input.form-control {
+    border-left:0;
+    font-size:1.1em;
+}
+#zk-main #currency {
+    border-left:0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    -webkit-appearance: none;
+}
+/* Loading */
+.zk-loading {
+    padding:200px; 
+    font-size:2em; 
+    text-align: center;
+}
 
-/*Stage 1*/
+/* Stage 1 */
 .zk-stage-1 {margin:2em 0 0;}
-.zk-nisab-thresholds {border-left:1px solid #677081; padding-left:80px; font-size: 18px;}
-.zk-nisab-thresholds p {font-size: 24px;}
-.zk-form .input-group-addon {background:#fff;}
-.zk-form a.btn-primary {background:#677081; color:#EBEBEB; padding: 12px 80px; font-size: 16px; border:0;}
-.zk-calculation-result {margin-top:2em;}
+.zk-nisab-thresholds {
+    margin-top:2em;
+    font-size:18px;
+}
+.zk-nisab-thresholds dd {padding: 8px 0;}
+.zk-nisab-threshold {
+    font-size:32px; 
+    color:#AC29B5;
+}
 
-/*Stage 2*/
+/*.zk-nisab-thresholds {border-left:1px solid #677081; padding-left:80px; font-size: 18px;}*/
+/*.zk-nisab-thresholds p {font-size: 24px;}*/
+.zk-form a.btn-primary {background:#AC29B5; color:#EBEBEB; padding: 12px; font-size: 16px; border:0; width:280px;}
+.zk-calculation-result {margin-top:2em;}
+#net-assets {background-color:#fff;}
+
+/* Stage 2 */
+.zk-stage-2 .zk-stage-1-summary {
+    padding:3em 0;
+    border-bottom:1px solid #ccc;
+}
+.zk-stage-2 .zk-stage-1-summary .zk-heading-circle {
+    background: #ccc;
+}
+.zk-stage-2 .zk-stage-1-summary p {
+    font-size: 28px;
+    color:#AC29B5;
+}
+.zk-stage-2 .zk-stage-1-summary .zakat-due {
+    display: block;
+    font-size: 1.2em;
+    color:#AC29B5;
+}
+
 .zk-suggested-charities {
 
 }
 .zk-suggested-charity {
-    border:1px solid #EBEBEB;
     text-align: center;
+    border:1px solid #EBEBEB;
     border-radius: 3px;
 }
-.zk-suggested-charity .zk-inner {padding:25px 12px;}
+.zk-suggested-charity .zk-inner {
+    padding:32px 25px;
+}
 .zk-suggested-charity a.zk-charity-name {display: block;}
 .zk-suggested-charity img {width:110px; height:110px;}
 .zk-suggested-charity p {text-align: left; }
+a.zk-charity-name {font-size:16px; color:#333; padding:1em;}
 .zk-suggested-charity p.zk-charity-desc {font-size:16px;}
 .zk-suggested-charity p.zk-charity-reg {font-size:13px;}
 
+.zk-charity-search-form h3 {margin:1em; text-align: center;}
 
+/*Search Results*/
+.zt-charity-search-results {margin:1em 0;}
 
 
 

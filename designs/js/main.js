@@ -1,1 +1,1 @@
-var app = angular.module('zakat', ['ui.bootstrap'])
+var app = angular.module('zakat', ['ui.bootstrap', 'ngAnimate', 'ngSanitize'])

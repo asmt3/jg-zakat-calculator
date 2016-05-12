@@ -1,0 +1,61 @@
+{
+	"timestamp_ms": 1462262185000,
+	"currencies": [
+
+
+		{
+			"name": "GBP (Great British Pounds)",
+			"symbol": "&pound;",
+			"threshold_au": 1000001,
+			"threshold_ag": 100
+		},
+		{
+			"name": "USD",
+			"symbol": "$",
+			"threshold_au": 1000002,
+			"threshold_ag": 100
+		},
+		{
+			"name": "EUR",
+			"symbol": "&euro;",
+			"threshold_au": 1000003,
+			"threshold_ag": 100
+		},
+		{
+			"name": "HKD",
+			"symbol": "HKD",
+			"threshold_au": 100000,
+			"threshold_ag": 100
+		},
+		{
+			"name": "SGD",
+			"symbol": "SGD",
+			"threshold_au": 100000,
+			"threshold_ag": 100
+		},
+		{
+			"name": "CAD",
+			"symbol": "CAD",
+			"threshold_au": 100000,
+			"threshold_ag": 100
+		},
+		{
+			"name": "AED",
+			"symbol": "AED",
+			"threshold_au": 100000,
+			"threshold_ag": 100
+		},
+		{
+			"name": "AUD",
+			"symbol": "AUD",
+			"threshold_au": 100000,
+			"threshold_ag": 100
+		},
+		{
+			"name": "ZAR",
+			"symbol": "ZAR",
+			"threshold_au": 100000,
+			"threshold_ag": 100
+		}
+	]
+}
