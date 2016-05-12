@@ -99,11 +99,16 @@ textarea {
 * {font-family: Roboto}
 
 /* Header */
-.zk-banner {background:#677081; padding:80px;}
-.zk-banner h1 { color:#EBEBEB; text-align:center;}
+.zk-banner {background:#AC29B5 url(../img/zk-banner.png) center no-repeat; height:354px;}
 .zk-intro {background:#EBEBEB; padding:30px; text-align:center;}
 .zk-intro h2 {font-weight: normal; margin:0 auto 25px; color:#677081; }
-.zk-illustration {margin:0 0 35px;}
+.zk-illustration {
+    background:url(../img/steps.png) top center no-repeat; 
+    width: 1002px; 
+    height:207px;
+    text-align: center;
+    margin:30px auto 50px;
+}
 .zk-cta a {background:#FE6301; color:#EBEBEB; padding: 12px 80px; font-size: 16px; border:0;}
 .zk-cta a:hover,
 .zk-cta a:focus {background:#FE6301;}
@@ -115,7 +120,7 @@ textarea {
 #zk-main h3 {margin-top:8px;}
 #zk-main .form-group {padding:1em 0; font-size:1.1em;}
 #zk-main .input-group-addon {background:#fff; border-right:0; font-size:1.3em; color:#9B9B9B;}
-#zk-main .form-control { font-size:1.1em; }
+#zk-main .form-control { font-size:1.1em; border-radius: 2px; box-shadow: none;}
 #zk-main input.form-control {
     border-left:0;
     font-size:1.1em;
