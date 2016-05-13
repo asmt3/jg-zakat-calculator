@@ -43,21 +43,21 @@ app.controller('zakatController', function ($scope, $http) {
 	$scope.showCharityPicker = false
 	$scope.charityQuery = ""
 	$scope.charities = [
-		{
-			name: "Test Name of the Charity",
-			SDIurl: "http://www.google.co.uk",
-			logoUrl: "http://images.justgiving.com/image/91417188-8ec7-45a0-b725-79f2e2e1468c.jpg"
-		},
-		{
-			name: "A super long super long super long super long super long super long super long super long Test Name of the Charity",
-			SDIurl: "http://www.google.co.uk",
-			logoUrl: "http://images.justgiving.com/image/91417188-8ec7-45a0-b725-79f2e2e1468c.jpg"
-		},
-		{
-			name: "Test Name of the Charity",
-			SDIurl: "http://www.google.co.uk",
-			logoUrl: "http://images.justgiving.com/image/91417188-8ec7-45a0-b725-79f2e2e1468c.jpg"
-		}
+		// {
+		// 	name: "Test Name of the Charity",
+		// 	SDIurl: "http://www.google.co.uk",
+		// 	logoUrl: "http://images.justgiving.com/image/91417188-8ec7-45a0-b725-79f2e2e1468c.jpg"
+		// },
+		// {
+		// 	name: "A super long super long super long super long super long super long super long super long Test Name of the Charity",
+		// 	SDIurl: "http://www.google.co.uk",
+		// 	logoUrl: "http://images.justgiving.com/image/91417188-8ec7-45a0-b725-79f2e2e1468c.jpg"
+		// },
+		// {
+		// 	name: "Test Name of the Charity",
+		// 	SDIurl: "http://www.google.co.uk",
+		// 	logoUrl: "http://images.justgiving.com/image/91417188-8ec7-45a0-b725-79f2e2e1468c.jpg"
+		// }
 	]
 
 
@@ -93,7 +93,11 @@ app.controller('zakatController', function ($scope, $http) {
 	}
 
 	$scope.showCalculator = function() {
-		$scope.ui_stage = 'search'
+
+		$scope.ui_stage = 'form'
+
+		// For debugging
+		// $scope.ui_stage = 'search'
 	}
 
 	$scope.useZakatCalculated = function() {

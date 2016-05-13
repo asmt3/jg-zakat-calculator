@@ -101,27 +101,40 @@ textarea {
     font-family: 'Roboto', sans-serif;
 }
 .zk-container a.btn{
-    width:260px;
+    width:80%;
     padding: 12px 20px; 
     border-radius: 3px;
-    font-size: 19px; 
+    font-size: 17px; 
     border:0;
     color:#fff;
 }
 /* Header */
-.zk-banner {background:#00C995 url(../img/zk-banner.png) center no-repeat; height:356px;}
-.zk-intro {background:#F5F5F5; padding:40px 80px; text-align:center; border-bottom: solid 1px #cccccc;}
-.zk-intro h2 {font-size:24px; font-weight: 300; color:#262626; margin:0 auto 25px; color:#677081; }
+.zk-banner {background:#00C995 url(../img/zk-banner-mob.png) center no-repeat; height:328px;}
+.zk-intro {background:#F5F5F5; padding-top:40px; padding-bottom:40px; text-align:center; border-bottom: solid 1px #cccccc;}
+.zk-intro h2 {font-size:18px; font-weight: 300; color:#262626; margin:0 auto 25px; color:#677081; }
 
 .zk-illustration {
-    background:url(../img/steps-dt.png) top center no-repeat; 
+    background:url(../img/steps-dt.png) top center no-repeat;
     height:207px;
     text-align: center;
     margin:30px auto 50px;
 }
 .zk-steps p {
-    font-size: 24px;
+    font-size: 18px;
     color: #262626;
+    text-align: left;
+    padding:8px 0 0 140px;
+    min-height: 85px;
+    margin-bottom:12px;
+}
+.zk-step-1 p {
+    background: url(../img/steps-mob-1.png) no-repeat 42px 0px;
+}
+.zk-step-2 p {
+    background: url(../img/steps-mob-2.png) no-repeat 42px 0px;
+}
+.zk-step-3 p {
+    background: url(../img/steps-mob-3.png) no-repeat 42px 0px;
 }
 .zk-cta-get-started {
     margin-top:42px;
@@ -205,12 +218,16 @@ textarea {
 
 .zk-stage-1 #base-nisab {font-size:28px; color:#9b9b9b; border-left:0;}
 
+.suggested-charities-stage-1 { background:#f5f5f5; border-top:1px solid #ccc; padding:24px 0;}
+.suggested-charities-stage-1 h2 {font-size:24px; color:#262626; text-align: center; margin:32px 0;}
+.suggested-charities-stage-1 p {font-size:18px; text-align: center; margin:12px 0 24px;}
 
 /*.zk-nisab-thresholds {border-left:1px solid #677081; padding-left:80px; font-size: 18px;}*/
 /*.zk-nisab-thresholds p {font-size: 24px;}*/
 .zk-form a.btn-primary {background:#AC29B5; color:#FFF;}
-.zk-container .zk-calculation-override {margin-top:67px;}
-.zk-calculation-override h3 {font-size: 36px; color: #262626; font-weight: normal; margin-bottom:31px;}
+.zk-stage-1 .zk-calculation-override {margin-top:67px;}
+.zk-calculation-override .input-group {margin-bottom:24px;}
+.zk-calculation-override h3 {font-size: 23px; color: #262626; font-weight: normal; margin-bottom:31px;}
 #net-assets {background-color:#fff;}
 
 /* Stage 2 */
@@ -234,13 +251,16 @@ textarea {
 .zk-stage-2 .zk-heading-border-indent .inner { background: #fff; }
 .zk-suggested-charities {}
 
-.btn-recalculate {border:#999999;}
+.zk-recalculate {text-align: center;}
+.zk-recalculate a.btn {border:1px solid #999999; color: #262626;}
 .zk-suggested-charity {
     text-align: center;
     border:1px solid #CCC;
     border-radius: 3px;
+    margin-bottom: 24px;
 }
 .zk-suggested-charity .zk-inner {
+    background: #fff;
     padding:32px 25px;
 }
 .zk-suggested-charity a.zk-charity-name {display: block;}
@@ -395,6 +415,13 @@ a.zk-charity-name {font-size:24px; color:#262626; padding:1em;}
 
 @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
+    .zk-container a.btn{ width:260px; font-size: 19px;}
+    .zk-banner {background:#00C995 url(../img/zk-banner-dt.png) center no-repeat; height:356px;}
+    .zk-intro h2 {font-size:24px;}
+    .zk-steps p {font-size: 24px; background:none; padding:0; min-height: auto; text-align: center;}
+    .zk-stage-1 .form-control {font-size:14px;}
+    .zk-stage-1 input.form-control {font-size:14px;}
+    .zk-calculation-override h3 {font-size: 36px;}
 }
 
 @media print,

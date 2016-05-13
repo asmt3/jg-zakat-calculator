@@ -35,7 +35,7 @@
 
 
         <!-- Top Banner -->
-        <div class="row zk-banner">
+        <div class="zk-banner">
         </div> <!-- End Top Banner -->
         
 
@@ -55,21 +55,25 @@
                 </div>
 
 
-                <div class="col-md-12">
+                <div class="col-md-12 hidden-xs">
                     <div class="zk-illustration">
                     </div>
                 </div>
 
                 <div class="row zk-steps">
 
-
-                    <div class="col-md-4">
+                    <!-- Step 1 -->
+                    <div class="col-md-4 zk-step-1">
                         <p>Calculate the correct<br>amount for you</p>
                     </div>
-                    <div class="col-md-4">
+
+                    <!-- Step 2 -->
+                    <div class="col-md-4 zk-step-2">
                         <p>Find a cause that<br>inspires you</p>
                     </div>
-                    <div class="col-md-4">
+
+                    <!-- Step 3 -->
+                    <div class="col-md-4 zk-step-3">
                         <p>Donate securely in seconds<br>and see your impact</p>
                     </div>
 
@@ -119,12 +123,12 @@
             <div class="container">
                 
                 <div class="row stage-heading">
-                    <div class="col-sm-1">
+                    <div class="col-sm-1 col-xs-2">
                         <span class="zk-heading-border-indent"><div class="inner"></div></span>
                         <span class="zk-heading-circle"><div class="inner">1</div></span>
 
                     </div>
-                    <div class="col-sm-11">
+                    <div class="col-sm-11 col-xs-10">
                         <h3>Calculate Your Zakat</h3>
                     </div>
 
@@ -135,13 +139,7 @@
 
                     <!-- Zakat Form -->
 
-
-
-
-
                     <div class="col-md-5 col-md-offset-1 zk-form">
-
-
 
                     <!-- Currency -->
 
@@ -468,19 +466,22 @@
                                     class="form-control"
                                     ng-model="formData.zakatOverride"
                                     id="zakat-override">
-                                </div>
+                            </div>
+
+                            <!-- Calculation Override CTA -->
+
+                            <a 
+                                class="btn btn-primary" 
+                                ng-click="useZakatOverride()"
+                                >
+                                Continue
+                            </a>
+
                                     
                         </div>
 
 
-                    <!-- Continue CTA -->
-
-                        <a 
-                            class="btn btn-primary" 
-                            ng-click="useZakatOverride()"
-                            >
-                            Continue
-                        </a>
+                    
 
 
 
@@ -525,6 +526,81 @@
                     </div>
                 </div>
             </div> <!-- End Container -->
+
+
+
+            <!-- Suggested Charities (Stage 1) -->
+            <div class="suggested-charities-stage-1">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2>Suggested Zakat Charities</h2>
+                            <p>Here are some charities you can support with your Zakat Giving</p>
+                        </div>
+                    </div>
+
+                    <div class="row zk-suggested-charities">
+                        <div class="col-md-4">
+                            <div class="zk-suggested-charity">
+                                <div class="zk-inner">
+                                    <img src="img/stock/charity-logo.jpg" class="zk-logo">
+                                    <a class="zk-charity-name">
+                                        Charity Name
+                                    </a>
+                                    <p class="zk-charity-desc">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                    </p>
+                                    <p class="zk-charity-reg">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 hidden-xs">
+                            <div class="zk-suggested-charity">
+                                <div class="zk-inner">
+                                    <img src="img/stock/charity-logo.jpg" class="zk-logo">
+                                    <a class="zk-charity-name">
+                                        Charity Name
+                                    </a>
+                                    <p class="zk-charity-desc">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                    </p>
+                                    <p class="zk-charity-reg">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 hidden-xs">
+                            <div class="zk-suggested-charity">
+                                <div class="zk-inner">
+                                    <img src="img/stock/charity-logo.jpg" class="zk-logo">
+                                    <a class="zk-charity-name">
+                                        Charity Name
+                                    </a>
+                                    <p class="zk-charity-desc">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                    </p>
+                                    <p class="zk-charity-reg">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End Suggested Charities (Stage 1) -->
+
+
+
+
         </div> <!-- End Stage 1: Calculate -->
 
         <!-- Stage 2: Select Charity -->
@@ -539,10 +615,10 @@
             <div class="zk-stage-1-summary">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-1">
+                        <div class="col-sm-1 col-xs-2">
                             <span class="zk-heading-circle"><div class="inner">1</div></span>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-8 col-xs-10">
                             <p>
                                 Your Zakat value is:
                                 <span class="zakat-due">
@@ -551,11 +627,11 @@
                             </p>
                         </div>
 
-                        <div class="col-sm-3">
+                        <div class="col-sm-3 col-xs-12 zk-recalculate">
                             <p>
                                 <a 
                                     ng-click="showCalculator()"
-                                    class="btn btn-default btn-recalculate"
+                                    class="btn btn-default"
                                     >
                                     Recalculate your Zakat
                                 </a>
@@ -568,11 +644,11 @@
             <!-- Main part of Stage 2 -->
             <div class="container">
                 <div class="row stage-heading">
-                    <div class="col-sm-1">
+                    <div class="col-sm-1 col-xs-2">
                         <span class="zk-heading-border-indent"><div class="inner"></div></span>
                         <span class="zk-heading-circle"><div class="inner">2</div></span>
                     </div>
-                    <div class="col-sm-11">
+                    <div class="col-sm-11 col-xs-10">
                         <h3>Select one of the suggested charities or search for a cause</h3>
                     </div>
                 </div>
@@ -713,6 +789,8 @@
              </div> <!-- End: Search Results -->
 
         </div>
+
+
 
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
