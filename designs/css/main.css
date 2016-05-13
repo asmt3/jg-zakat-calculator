@@ -145,7 +145,7 @@ textarea {
 }
 
 .zk-cta-get-started a:hover,
-.zk-cta-get-started a:focus {background:#FE6301;}
+.zk-cta-get-started a:focus {background:#ad29b6;}
 
 .zk-find-out-more {margin-top:50px; font-size:16px;}
 
@@ -174,7 +174,7 @@ textarea {
 }
 .zk-container .zk-heading-circle {text-align: center; width:44px; height: 44px; background:#AC29B5; color:#EBEBEB; border-radius: 50%; display: table;}
 .zk-container .zk-heading-circle .inner {display: table-cell; vertical-align: middle; font-size:30px;}
-.zk-container h3 {margin-top:8px;}
+.zk-container h3 {margin-top:8px; color:#262626;}
 
 /* Loading */
 .zk-loading {
@@ -281,7 +281,8 @@ a.zk-charity-name {font-size:24px; color:#262626; padding:1em;}
 .zk-charity-search-form .btn {
     background: #1d67be;
 }
-.zk-charity-search-form .btn:hover {
+.zk-charity-search-form .btn:hover,
+.zk-charity-search-form .btn:focus {
     background: #1d67be;
 }
 

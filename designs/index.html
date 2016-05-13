@@ -178,7 +178,8 @@
                                 <input
                                     select-on-click
                                     ng-change="updateZakatCalculated()" 
-                                    type="number" 
+                                    type="number"
+                                    min="0" 
                                     class="form-control"
                                     id="gold-silver"
                                     ng-model="formData.goldSilver"> 
@@ -198,7 +199,8 @@
                                 <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
                                   <input
                                     ng-change="updateZakatCalculated()" 
-                                    type="number" 
+                                    type="number"
+                                    min="0" 
                                     class="form-control"
                                     id="cash"
                                     ng-model="formData.cash">
@@ -223,7 +225,8 @@
                                 <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
                                   <input
                                     ng-change="updateZakatCalculated()" 
-                                    type="number" 
+                                    type="number"
+                                    min="0" 
                                     class="form-control"
                                     id="other-savings"
                                     ng-model="formData.otherSavings">
@@ -251,7 +254,8 @@
                                 <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
                                   <input
                                     ng-change="updateZakatCalculated()" 
-                                    type="number" 
+                                    type="number"
+                                    min="0" 
                                     class="form-control"
                                     id="investment"
                                     ng-model="formData.investment">
@@ -279,7 +283,8 @@
                                 <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
                                   <input
                                     ng-change="updateZakatCalculated()" 
-                                    type="number" 
+                                    type="number"
+                                    min="0" 
                                     class="form-control"
                                     id="owed-in"
                                     ng-model="formData.owedIn"
@@ -308,7 +313,8 @@
                                 <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
                               <input
                                 ng-change="updateZakatCalculated()" 
-                                type="number" 
+                                type="number"
+                                min="0" 
                                 class="form-control"
                                 id="stock-value"
                                 ng-model="formData.stockValue">
@@ -334,7 +340,8 @@
                                 <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
                               <input
                                 ng-change="updateZakatCalculated()" 
-                                type="number" 
+                                type="number"
+                                min="0" 
                                 class="form-control"
                                 id="owed-out"
                                 ng-model="formData.owedOut"
@@ -359,7 +366,8 @@
                                 <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
                               <input
                                 ng-change="updateZakatCalculated()" 
-                                type="number" 
+                                type="number"
+                                min="0" 
                                 class="form-control"
                                 id="other-outgoings-due"
                                 ng-model="formData.otherOutgoingsDue">
@@ -385,7 +393,8 @@
                                 <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
                               <input
                                 ng-change="updateZakatCalculated()" 
-                                type="number" 
+                                type="number"
+                                min="0" 
                                 readonly="readonly"
                                 class="form-control"
                                 ng-model="formData.netAssets" 
@@ -672,7 +681,7 @@
                                 <p class="zk-charity-reg">
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                 </p>
-                                <a class="btn zk-cta">Donate</a>
+                                <a class="btn zk-cta" href="http://www.justgiving.com">Donate</a>
                             </div>
                         </div>
                     </div>
@@ -693,7 +702,7 @@
                                 <p class="zk-charity-reg">
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
                                 </p>
-                                <a class="btn btn-default zk-cta">Donate</a>
+                                <a class="btn zk-cta" href="http://www.justgiving.com">Donate</a>
                             </div>
                         </div>
                     </div>
@@ -714,7 +723,7 @@
                                 <p class="zk-charity-reg">
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                 </p>
-                                <a class="btn btn-default zk-cta">Donate</a>
+                                <a class="btn zk-cta" href="http://www.justgiving.com">Donate</a>
                             </div>
                         </div>
                     </div>
@@ -740,7 +749,10 @@
 
                                 <div class="input-group-btn">
 
-                                    <a class="btn btn-default" href="#" type="submit">Search</a>
+                                    <a 
+                                        class="btn btn-default" 
+                                        ng-click="searchCharities()"
+                                    >Search</a>
                                 </div>
                             </div>
 
