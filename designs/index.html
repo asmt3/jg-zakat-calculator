@@ -57,23 +57,24 @@
 
                 <div class="col-md-12 hidden-xs">
                     <div class="zk-illustration">
+                        <img src="img/steps-dt.png">
                     </div>
                 </div>
 
                 <div class="row zk-steps">
 
                     <!-- Step 1 -->
-                    <div class="col-md-4 zk-step-1">
+                    <div class="col-sm-4 zk-step-1">
                         <p>Calculate the correct<br>amount for you</p>
                     </div>
 
                     <!-- Step 2 -->
-                    <div class="col-md-4 zk-step-2">
+                    <div class="col-sm-4 zk-step-2">
                         <p>Find a cause that<br>inspires you</p>
                     </div>
 
                     <!-- Step 3 -->
-                    <div class="col-md-4 zk-step-3">
+                    <div class="col-sm-4 zk-step-3">
                         <p>Donate securely in seconds<br>and see your impact</p>
                     </div>
 
@@ -84,8 +85,7 @@
                 <div class="row zk-cta zk-cta-get-started">
                     <a 
                         class="btn btn-primary" 
-                        scroll-on-click
-                        href="#zk-main"
+                        ng-click="getStarted()"
                     >Get Started</a>
                 </div>
 
@@ -627,7 +627,7 @@
                         <div class="col-sm-1 col-xs-2">
                             <span class="zk-heading-circle"><div class="inner">1</div></span>
                         </div>
-                        <div class="col-sm-8 col-xs-10">
+                        <div class="col-sm-6 col-xs-10">
                             <p>
                                 Your Zakat value is:
                                 <span class="zakat-due">
@@ -636,10 +636,10 @@
                             </p>
                         </div>
 
-                        <div class="col-sm-3 col-xs-12 zk-recalculate">
+                        <div class="col-sm-5 col-xs-12 zk-recalculate">
                             <p>
                                 <a 
-                                    ng-click="showCalculator()"
+                                    ng-click="getStarted()"
                                     class="btn btn-default"
                                     >
                                     Recalculate your Zakat

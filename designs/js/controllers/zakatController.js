@@ -98,16 +98,28 @@ app.controller('zakatController', function ($scope, $http) {
 
 		// For debugging
 		// $scope.ui_stage = 'search'
+
+	}
+
+	$scope.getStarted = function() {
+
+		$scope.ui_stage = 'form'
+		scrollToToppish();
 	}
 
 	$scope.useZakatCalculated = function() {
 		$scope.formData.zakatDue = $scope.formData.zakatCalculated;
+
+		
 		$scope.ui_stage = 'search'
+		scrollToToppish();
 	}
 
 	$scope.useZakatOverride = function() {
 		$scope.formData.zakatDue = $scope.formData.zakatOverride;
+		
 		$scope.ui_stage = 'search'
+		scrollToToppish();
 	}
 
 	$scope.searchCharities = function() {
@@ -160,8 +172,21 @@ app.controller('zakatController', function ($scope, $http) {
 		}, simulatedDelay)
 	}
 
+
+	function scrollToToppish() {
+
+		// scrolls to the top of whatever form is showing
+		var el = $(".zk-intro");
+
+		var scrollTargetY = el.position().top + el.height() + 80;
+		console.log(scrollTargetY);
+		$("body").animate({scrollTop: scrollTargetY}, "slow");
+
+	}
+
 	
 	getNisabValuesByCurrency()
+
 
 })
 
@@ -189,8 +214,12 @@ app.controller('zakatController', function ($scope, $http) {
   return {
     restrict: 'A',
     link: function(scope, $elm) {
+
+    	// determine target
+    	var $target = angular.element($elm.attr('href'))
+
       $elm.on('click', function() {
-        $("body").animate({scrollTop: $elm.offset().top}, "slow");
+        $("body").animate({scrollTop: $target.offset().top}, "slow");
       });
     }
   }

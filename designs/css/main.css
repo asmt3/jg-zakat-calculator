@@ -114,10 +114,11 @@ textarea {
 .zk-intro h2 {font-size:18px; font-weight: 300; color:#262626; margin:0 auto 25px; color:#677081; }
 
 .zk-illustration {
-    background:url(../img/steps-dt.png) top center no-repeat;
-    height:207px;
     text-align: center;
     margin:30px auto 50px;
+}
+.zk-illustration img {
+    max-width:100%;
 }
 .zk-steps p {
     font-size: 18px;
@@ -151,7 +152,7 @@ textarea {
 
 /* Main */
 .zk-container { color:#6B7074; padding-bottom:80px;}
-.zk-container .stage-heading {margin-bottom: 20px; margin-top: 20px; position: relative;}
+.zk-container .stage-heading {padding-bottom: 20px; padding-top: 20px; position: relative;}
 .zk-container .zk-heading-border-indent {
     position: absolute;
     height:30px;
@@ -195,7 +196,7 @@ textarea {
 .zk-nisab-thresholds h3 {font-size: 24px; color:#262626;}
 .zk-nisab-thresholds dd {padding: 8px 0;}
 .zk-nisab-threshold {
-    font-size:36px; 
+    font-size:24px; 
     color:#AC29B5;
 }
 
@@ -235,12 +236,12 @@ textarea {
 .zk-stage-2 .zk-stage-1-summary {
     border-bottom:1px solid #ccc;
 }
-.zk-stage-2 .stage-heading {margin-top:50px;}
+.zk-stage-2 .stage-heading {margin-top:30px;}
 .zk-container .zk-stage-2 .zk-stage-1-summary .zk-heading-circle {
     background: #ccc;
 }
 .zk-stage-2 .zk-stage-1-summary p {
-    font-size: 28px;
+    font-size: 18px;
     color:#AC29B5;
 }
 .zk-stage-2 .zk-stage-1-summary .zakat-due {
@@ -278,7 +279,9 @@ a.zk-charity-name {font-size:24px; color:#262626; padding:1em;}
     text-align: center;
 }
 
-.zk-charity-search-form .btn {
+
+.zk-charity-search-form a.btn {
+    width:auto;
     background: #1d67be;
 }
 .zk-charity-search-form .btn:hover,
@@ -422,7 +425,10 @@ a.zk-charity-name {font-size:24px; color:#262626; padding:1em;}
     .zk-steps p {font-size: 24px; background:none; padding:0; min-height: auto; text-align: center;}
     .zk-stage-1 .form-control {font-size:14px;}
     .zk-stage-1 input.form-control {font-size:14px;}
+    .zk-nisab-threshold { font-size:36px; }
+    .zk-stage-2 .zk-stage-1-summary p {font-size: 28px;}
     .zk-calculation-override h3 {font-size: 36px;}
+
 }
 
 @media print,
