@@ -35,13 +35,30 @@ app.controller('zakatController', function ($scope, $http) {
 		"netAssets": 0,
 		"nisabThreshold": 0,
 		"zakatCalculated": 0, // how much we calculate
+		"zakatOverride": 0, // their override
 		"zakatDue": 0 // the value that is shown, that they can override
 	}
 
 	// charity search state
 	$scope.showCharityPicker = false
 	$scope.charityQuery = ""
-	$scope.charities = []
+	$scope.charities = [
+		{
+			name: "Test Name of the Charity",
+			SDIurl: "http://www.google.co.uk",
+			logoUrl: "http://images.justgiving.com/image/91417188-8ec7-45a0-b725-79f2e2e1468c.jpg"
+		},
+		{
+			name: "A super long super long super long super long super long super long super long super long Test Name of the Charity",
+			SDIurl: "http://www.google.co.uk",
+			logoUrl: "http://images.justgiving.com/image/91417188-8ec7-45a0-b725-79f2e2e1468c.jpg"
+		},
+		{
+			name: "Test Name of the Charity",
+			SDIurl: "http://www.google.co.uk",
+			logoUrl: "http://images.justgiving.com/image/91417188-8ec7-45a0-b725-79f2e2e1468c.jpg"
+		}
+	]
 
 
 
@@ -75,8 +92,18 @@ app.controller('zakatController', function ($scope, $http) {
 
 	}
 
-	$scope.showZakatCalculated = function() {
+	$scope.showCalculator = function() {
+		$scope.ui_stage = 'search'
+	}
+
+	$scope.useZakatCalculated = function() {
 		$scope.formData.zakatDue = $scope.formData.zakatCalculated;
+		$scope.ui_stage = 'search'
+	}
+
+	$scope.useZakatOverride = function() {
+		$scope.formData.zakatDue = $scope.formData.zakatOverride;
+		$scope.ui_stage = 'search'
 	}
 
 	$scope.searchCharities = function() {
@@ -116,16 +143,14 @@ app.controller('zakatController', function ($scope, $http) {
 
 			$http.get(nisabSourceURL).success( function(response) {
 
-				// console.log(response)
-
 				// load nisab values
 				$scope.nisab = response
 
 				// set default currency as the first in the list
 				$scope.selectedCurrency = $scope.nisab.currencies[0]
 
-				// change UI stage
-				$scope.ui_stage = 'form'
+				// show Calc
+				$scope.showCalculator()
 
 			})
 		}, simulatedDelay)

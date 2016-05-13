@@ -96,41 +96,73 @@ textarea {
    ========================================================================== */
 
 /*General*/
-* {font-family: Roboto}
-
+* {}
+.zk-container {
+    font-family: 'Roboto', sans-serif;
+}
+.zk-container a.btn{
+    width:260px;
+    padding: 12px 20px; 
+    border-radius: 3px;
+    font-size: 19px; 
+    border:0;
+    color:#fff;
+}
 /* Header */
-.zk-banner {background:#AC29B5 url(../img/zk-banner.png) center no-repeat; height:354px;}
-.zk-intro {background:#EBEBEB; padding:30px; text-align:center;}
-.zk-intro h2 {font-weight: normal; margin:0 auto 25px; color:#677081; }
+.zk-banner {background:#00C995 url(../img/zk-banner.png) center no-repeat; height:356px;}
+.zk-intro {background:#F5F5F5; padding:40px 80px; text-align:center; border-bottom: solid 1px #cccccc;}
+.zk-intro h2 {font-size:24px; font-weight: 300; color:#262626; margin:0 auto 25px; color:#677081; }
+
 .zk-illustration {
-    background:url(../img/steps.png) top center no-repeat; 
-    width: 1002px; 
+    background:url(../img/steps-dt.png) top center no-repeat; 
     height:207px;
     text-align: center;
     margin:30px auto 50px;
 }
-.zk-cta a {background:#FE6301; color:#EBEBEB; padding: 12px 80px; font-size: 16px; border:0;}
-.zk-cta a:hover,
-.zk-cta a:focus {background:#FE6301;}
+.zk-steps p {
+    font-size: 24px;
+    color: #262626;
+}
+.zk-cta-get-started {
+    margin-top:42px;
+}
+.zk-cta-get-started a {
+    background-color: #ac29b5;
+    color:#FFF; 
+}
+
+.zk-cta-get-started a:hover,
+.zk-cta-get-started a:focus {background:#FE6301;}
+
+.zk-find-out-more {margin-top:50px; font-size:16px;}
 
 /* Main */
-#zk-main { color:#6B7074; padding-bottom:80px;}
-#zk-main .stage-heading {margin-bottom: 20px; margin-top: 20px}
-#zk-main .zk-heading-circle {border-radius: 50%; background:#AC29B5; color:#EBEBEB; padding:7px 16px; font-size:28px;}
-#zk-main h3 {margin-top:8px;}
-#zk-main .form-group {padding:1em 0; font-size:1.1em;}
-#zk-main .input-group-addon {background:#fff; border-right:0; font-size:1.3em; color:#9B9B9B;}
-#zk-main .form-control { font-size:1.1em; border-radius: 2px; box-shadow: none;}
-#zk-main input.form-control {
-    border-left:0;
-    font-size:1.1em;
+.zk-container { color:#6B7074; padding-bottom:80px;}
+.zk-container .stage-heading {margin-bottom: 20px; margin-top: 20px; position: relative;}
+.zk-container .zk-heading-border-indent {
+    position: absolute;
+    height:30px;
+    width: 60px;
+    top:-51px;
+    overflow: hidden;
+    left:9px;
+
 }
-#zk-main #currency {
-    border-left:0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    -webkit-appearance: none;
+.zk-container .zk-heading-border-indent .inner {
+    position: relative;
+    top:-50px;
+    display: block;
+    width: 65px;
+    height: 65px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-color: #f5f5f5;
+    border: solid 1px #cccccc;
 }
+.zk-container .zk-heading-circle {text-align: center; width:44px; height: 44px; background:#AC29B5; color:#EBEBEB; border-radius: 50%; display: table;}
+.zk-container .zk-heading-circle .inner {display: table-cell; vertical-align: middle; font-size:30px;}
+.zk-container h3 {margin-top:8px;}
+
 /* Loading */
 .zk-loading {
     padding:200px; 
@@ -139,29 +171,55 @@ textarea {
 }
 
 /* Stage 1 */
-.zk-stage-1 {margin:2em 0 0;}
+.zk-stage-1 {padding:30px 0 0;}
 .zk-nisab-thresholds {
     margin-top:2em;
-    font-size:18px;
+    font-size:16px;
 }
+.zk-nisab-thresholds .zk-currency-symbol {
+    font-size:28px;
+}
+.zk-nisab-thresholds h3 {font-size: 24px; color:#262626;}
 .zk-nisab-thresholds dd {padding: 8px 0;}
 .zk-nisab-threshold {
-    font-size:32px; 
+    font-size:36px; 
     color:#AC29B5;
 }
 
+.zk-stage-1 .form-group {margin:0 0 29px; font-size:16px;}
+.zk-stage-1 .input-group-addon {background:#fff; border-right:0; font-size:1.3em; color:#9B9B9B; border-radius: 2px;}
+.zk-stage-1 .form-control { font-size:16px; border-radius: 2px; box-shadow: none; height:58px;}
+.zk-stage-1 input.form-control {
+    border-left:0;
+    font-size:16px;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+.zk-stage-1 select.form-control {
+    color:#AC29B5;
+    border-left:0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    -webkit-appearance: none;
+}
+
+.zk-stage-1 #base-nisab {font-size:28px; color:#9b9b9b; border-left:0;}
+
+
 /*.zk-nisab-thresholds {border-left:1px solid #677081; padding-left:80px; font-size: 18px;}*/
 /*.zk-nisab-thresholds p {font-size: 24px;}*/
-.zk-form a.btn-primary {background:#AC29B5; color:#EBEBEB; padding: 12px; font-size: 16px; border:0; width:280px;}
-.zk-calculation-result {margin-top:2em;}
+.zk-form a.btn-primary {background:#AC29B5; color:#FFF;}
+.zk-container .zk-calculation-override {margin-top:67px;}
+.zk-calculation-override h3 {font-size: 36px; color: #262626; font-weight: normal; margin-bottom:31px;}
 #net-assets {background-color:#fff;}
 
 /* Stage 2 */
+.zk-stage-2 {padding-top:30px;}
 .zk-stage-2 .zk-stage-1-summary {
-    padding:3em 0;
     border-bottom:1px solid #ccc;
 }
-.zk-stage-2 .zk-stage-1-summary .zk-heading-circle {
+.zk-stage-2 .stage-heading {margin-top:50px;}
+.zk-container .zk-stage-2 .zk-stage-1-summary .zk-heading-circle {
     background: #ccc;
 }
 .zk-stage-2 .zk-stage-1-summary p {
@@ -173,29 +231,83 @@ textarea {
     font-size: 1.2em;
     color:#AC29B5;
 }
+.zk-stage-2 .zk-heading-border-indent .inner { background: #fff; }
+.zk-suggested-charities {}
 
-.zk-suggested-charities {
-
-}
+.btn-recalculate {border:#999999;}
 .zk-suggested-charity {
     text-align: center;
-    border:1px solid #EBEBEB;
+    border:1px solid #CCC;
     border-radius: 3px;
 }
 .zk-suggested-charity .zk-inner {
     padding:32px 25px;
 }
 .zk-suggested-charity a.zk-charity-name {display: block;}
-.zk-suggested-charity img {width:110px; height:110px;}
+.zk-suggested-charity img {width:120px; height:120px;}
 .zk-suggested-charity p {text-align: left; }
-a.zk-charity-name {font-size:16px; color:#333; padding:1em;}
-.zk-suggested-charity p.zk-charity-desc {font-size:16px;}
-.zk-suggested-charity p.zk-charity-reg {font-size:13px;}
+a.zk-charity-name {font-size:24px; color:#262626; padding:1em;}
+.zk-suggested-charity p.zk-charity-desc {font-size:16px; color:#262626; min-height:140px;}
+.zk-suggested-charity p.zk-charity-reg {font-size:14px; color:#737373; min-height:60px;}
+.zk-suggested-charity a.zk-cta {background: #AC29B5; width:80%; color:#fff; margin-top:32px;}
 
-.zk-charity-search-form h3 {margin:1em; text-align: center;}
+.zk-charity-search-form h3 {
+    font-size: 24px;
+    color: #262626;
+    margin:52px 0 37px;
+    text-align: center;
+}
+
+.zk-charity-search-form .btn {
+    background: #1d67be;
+}
+.zk-charity-search-form .btn:hover {
+    background: #1d67be;
+}
+
+.zk-charity-search-form input {
+    height: 51px;
+    font-size: 16px;
+}
 
 /*Search Results*/
-.zt-charity-search-results {margin:1em 0;}
+.zt-charity-search-results .zk-charity-list {
+    
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+    border: solid 1px #cccccc;
+    border-top:0; border-bottom:0;
+    background:#fff;
+    margin-bottom:32px;
+
+    /*z-index:999;
+    position: absolute;
+    width:720px;*/
+}
+
+.zt-charity-search-results table td {
+    vertical-align: middle;
+    border-bottom: solid 1px #cccccc;
+}
+
+.zt-charity-search-results table td a {
+    color:#262626;
+    font-size: 24px;
+}
+.zt-charity-search-results .zk-charity-logo .zk-inner{
+    float:left;
+    height:93px;
+    width:93px;
+    margin:12px;
+    text-align: center;
+}
+.zt-charity-search-results .zk-charity-logo img {
+    max-width: 100%;
+    max-height: 100%
+}
+
+.zt-charity-search-results .zk-charity-name {
+    width:100%;
+}
 
 
 

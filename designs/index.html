@@ -15,7 +15,7 @@
 
 
         <!-- Libraries -->
-        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.css">
 
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
@@ -27,6 +27,7 @@
     </head>
     <body
         ng-controller="zakatController"
+        class="zk-container"
     >
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -39,14 +40,17 @@
         
 
 
-<!-- Zakat Intro -->
+        <!-- Zakat Intro -->
         <div class="zk-intro">
             <div class="container">
 
                 
                 <div class="col-md-12">
                     
-                    <h2>Calculate your Zakat giving in minutes and an appropriate cause to give to</h2>
+                    <h2>
+                        Calculate your Zakat giving in minutes<br>
+                        and find an appropriate cause to give to
+                    </h2>
 
                 </div>
 
@@ -56,56 +60,69 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row zk-steps">
 
 
-                    <div class="col-md-2 col-md-offset-1">
-                        <p>Calculate the correct amount for you</p>
+                    <div class="col-md-4">
+                        <p>Calculate the correct<br>amount for you</p>
                     </div>
-                    <div class="col-md-2 col-md-offset-2">
-                        <p>Find a cause that inspires you</p>
+                    <div class="col-md-4">
+                        <p>Find a cause that<br>inspires you</p>
                     </div>
-                    <div class="col-md-2 col-md-offset-2">
-                        <p>Donate securely in seconds and see your impact</p>
+                    <div class="col-md-4">
+                        <p>Donate securely in seconds<br>and see your impact</p>
                     </div>
 
                 </div>
 
 
                 <!-- Call to action -->
-                <div class="zk-cta zk-cta-get-started">
+                <div class="row zk-cta zk-cta-get-started">
                     <a 
                         class="btn btn-primary" 
                         scroll-on-click
                         href="#zk-main"
                     >Get Started</a>
                 </div>
-            </div>
 
+                <!-- Find out more -->
+                <div class="row zk-find-out-more">
+                    <div class="col-md-12">
+                        <p>
+                            Questions? 
+                            <a href="https://help.justgiving.com/hc/en-us/articles/207804259">
+                                Find out more about Zakat on Justgiving
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div> <!-- End: Zakat Intro -->
 
 
+        <!-- Nisab Loading -->
         <div 
             class="container zk-loading" 
             ng-show=" ui_stage == 'loading' ">
             <p>Loading Nisab values...</p>
-        </div>
+        </div> <!-- End Nisab Loading -->
 
 
+        
+
+        <!-- Stage 1: Calculation Stage-->
         <div 
-            id="zk-main"
-            class="container" 
+            class="zk-stage-1"
+            ng-show=" ui_stage == 'form' "
         >
 
-            <!-- Stage 1: Calculate -->
-            <div 
-                class="zk-stage-1"
-                ng-show=" ui_stage == 'form' "
-            >
+            <div class="container">
                 
                 <div class="row stage-heading">
                     <div class="col-sm-1">
-                        <span class="zk-heading-circle">1</span>
+                        <span class="zk-heading-border-indent"><div class="inner"></div></span>
+                        <span class="zk-heading-circle"><div class="inner">1</div></span>
+
                     </div>
                     <div class="col-sm-11">
                         <h3>Calculate Your Zakat</h3>
@@ -113,9 +130,20 @@
 
                 </div>
                 
-                <!-- Currency -->
+                
                 <div class="row">
-                    <div class="col-md-5 col-md-offset-1">
+
+                    <!-- Zakat Form -->
+
+
+
+
+
+                    <div class="col-md-5 col-md-offset-1 zk-form">
+
+
+
+                    <!-- Currency -->
 
 
                         <div class="form-group">
@@ -138,13 +166,7 @@
                             </div>
                         </div>
 
-                    </div>
-                </div>
 
-                <div class="row">
-
-                    <!-- Zakat Form -->
-                    <div class="col-md-5 col-md-offset-1 zk-form">
                         
                         <!-- Value of Gold &amp; Silver you possess -->
                         <div class="form-group">
@@ -382,10 +404,14 @@
                                 Base Nisab value on
                             </label>
 
-                            
+
+
                             <div class="input-group">
 
-
+                                <div 
+                                    class="input-group-addon">
+                                    &nbsp;
+                                </div>
 
                                 <select 
                                     id="base-nisab"
@@ -395,18 +421,19 @@
                                 >
                                     <option 
                                         value="silver"
-                                        ng-bind-html="'Silver ' + selectedCurrency.symbol + (selectedCurrency.threshold_ag | currency : '' : 2)"
                                         >
+                                        Silver
                                     </option>
 
                                     <option 
                                         value="gold"
-                                        ng-bind-html="'Gold ' + selectedCurrency.symbol + (selectedCurrency.threshold_au | currency : '' : 2)"
                                     >
+                                        Gold
                                     </option>
 
                                 </select>
                             </div>
+
                         </div>
 
 
@@ -414,17 +441,22 @@
 
                         <a 
                             class="btn btn-primary"
-                            ng-click="showZakatCalculated()"
+                            ng-click="useZakatCalculated()"
                         >
-                            Calculate
+                            Calculate your Zakat
                         </a>
 
 
-                    <!-- Your Zakat Due -->
+                    <!-- Zakat Override -->
 
-                        <div class="form-group zk-calculation-result">
+                        <div class="form-group zk-calculation-override">
+
+                            <h3>I already know the amount<br>I want to give</h3>
+
+
+
                             <label 
-                                class="control-label" for="zakat-due">
+                                class="control-label" for="zakat-override">
                                 Zakat Amount
                             </label>
 
@@ -434,8 +466,8 @@
                                     type="text" 
                                     format="currency"
                                     class="form-control"
-                                    ng-model="formData.zakatDue"
-                                    id="zakat-due">
+                                    ng-model="formData.zakatOverride"
+                                    id="zakat-override">
                                 </div>
                                     
                         </div>
@@ -445,7 +477,7 @@
 
                         <a 
                             class="btn btn-primary" 
-                            ng-click=" ui_stage='search' "
+                            ng-click="useZakatOverride()"
                             >
                             Continue
                         </a>
@@ -460,7 +492,7 @@
                     <div class="col-md-offset-2 col-md-4">
 
                         <div class="zk-nisab-thresholds">
-                            <p>Current Values</p>
+                            <h3>Current Values</h3>
                             <dl>
                                 <dt>Silver Nisab</dt>
                                 <dd class='zk-nisab-threshold-gold'>
@@ -492,45 +524,53 @@
 
                     </div>
                 </div>
+            </div> <!-- End Container -->
+        </div> <!-- End Stage 1: Calculate -->
 
-            </div> <!-- End Stage 1: Calculate -->
+        <!-- Stage 2: Select Charity -->
 
-            <!-- Stage 2: Select Charity -->
+        <div 
+            class="zk-stage-2"
+            ng-show=" ui_stage == 'search' "
+        >
 
-            <div 
-                class="zk-stage-2"
-                ng-show=" ui_stage == 'search' "
-            >
+            
+            <!-- Stage 1 Summary, shown at Stage 2 -->
+            <div class="zk-stage-1-summary">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <span class="zk-heading-circle"><div class="inner">1</div></span>
+                        </div>
+                        <div class="col-sm-8">
+                            <p>
+                                Your Zakat value is:
+                                <span class="zakat-due">
+                                    <span ng-bind-html="selectedCurrency.symbol"></span>{{formData.zakatDue | currency : ''}}
+                                </span>
+                            </p>
+                        </div>
 
-
-                <div class="row zk-stage-1-summary">
-                    <div class="col-sm-1">
-                        <span class="zk-heading-circle">1</span>
-                    </div>
-                    <div class="col-sm-8">
-                        <p>
-                            Your Zakat value is:
-                            <span class="zakat-due">
-                                <span ng-bind-html="selectedCurrency.symbol"></span>{{formData.zakatDue | currency : ''}}
-                            </span>
-                        </p>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <p>
-                            <a 
-                                ng-click=" ui_stage='form' "
-                                class="btn btn-default"
-                                >
-                                Recalculate your Zakat
-                            </a>
-                        </p>
+                        <div class="col-sm-3">
+                            <p>
+                                <a 
+                                    ng-click="showCalculator()"
+                                    class="btn btn-default btn-recalculate"
+                                    >
+                                    Recalculate your Zakat
+                                </a>
+                            </p>
+                        </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- Main part of Stage 2 -->
+            <div class="container">
                 <div class="row stage-heading">
                     <div class="col-sm-1">
-                        <span class="zk-heading-circle">2</span>
+                        <span class="zk-heading-border-indent"><div class="inner"></div></span>
+                        <span class="zk-heading-circle"><div class="inner">2</div></span>
                     </div>
                     <div class="col-sm-11">
                         <h3>Select one of the suggested charities or search for a cause</h3>
@@ -555,7 +595,27 @@
                                 </p>
                                 <p class="zk-charity-reg">
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                </p>
+                                <a class="btn zk-cta">Donate</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div 
+                        class="col-md-4"
+                        >
+                        <div class="zk-suggested-charity">
+                            <div class="zk-inner">
+                                <img src="img/stock/charity-logo.jpg" class="zk-logo">
+                                <a class="zk-charity-name">
+                                    Charity Name
+                                </a>
+                                <p class="zk-charity-desc">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                </p>
+                                <p class="zk-charity-reg">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
                                 </p>
                                 <a class="btn btn-default zk-cta">Donate</a>
                             </div>
@@ -576,30 +636,7 @@
                                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
                                 </p>
                                 <p class="zk-charity-reg">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-                                </p>
-                                <a class="btn btn-default zk-cta">Donate</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div 
-                        class="col-md-4"
-                        >
-                        <div class="zk-suggested-charity">
-                            <div class="zk-inner">
-                                <img src="img/stock/charity-logo.jpg" class="zk-logo">
-                                <a class="zk-charity-name">
-                                    Charity Name
-                                </a>
-                                <p class="zk-charity-desc">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-                                </p>
-                                <p class="zk-charity-reg">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                 </p>
                                 <a class="btn btn-default zk-cta">Donate</a>
                             </div>
@@ -610,7 +647,7 @@
                 <!-- Search Form -->
                 <div class="row zk-charity-search-form">
                     
-                    <div class="col-md-6 col-md-offset-3">
+                    <div class="col-md-8 col-md-offset-2">
 
                         <h3>Search for your cause</h3>
 
@@ -636,41 +673,47 @@
 
                 <!-- Search Results -->
                 <div class="row zt-charity-search-results">
-                    <div class="col-md-12">
-                        <table class="table table-striped">
-                         
-                            <tr ng-repeat=" charity in charities ">
-                                <td>
-                                    <img ng-src="{{ charity.logoUrl }}?template=size100x100" width="64">
-                                </td>
-                                
-                                <td>
-                                    &nbsp;
-                                    {{ charity.name }}
-                                </td>
+                    <div class="col-md-8 col-md-offset-2">
 
-                                <td>
-                                    <a 
-                                        class="btn btn-default" 
-                                        ng-href="{{ charity.SDIurl }}" 
-                                        role="button"
-                                        >
-                                        Give with JustGiving
-                                    </a>
-                                </td>
-                            </tr>
-                         </table>
+                        <div class="zk-charity-list">
+
+                            <table>
+                                <tr ng-repeat=" charity in charities ">
+
+                                    <td class="zk-charity-logo">
+                                        <div class="zk-inner">
+                                            <a 
+                                                ng-href="{{ charity.SDIurl }}" 
+                                                role="button"
+                                                >
+                                                <img ng-src="{{ charity.logoUrl }}?template=size100x100" width="64">
+                                            </a>
+                                        </div>
+                                    </td>
+
+                                    <td class="zk-charity-name">
+                                        
+                                        <a 
+                                            ng-href="{{ charity.SDIurl }}" 
+                                            role="button"
+                                            >
+                                            {{ charity.name }}
+                                        </a>
+
+                                    </td>
+
+
+                                </tr>
+
+
+                            </table> <!-- End .zk-charity-list -->
+                        </div>
                      </div>
-                 </div> <!-- End: Search Results -->
+                </div> <!-- End Container -->
+             </div> <!-- End: Search Results -->
 
-
-
-            </div>
         </div>
 
-
-
-        </div> <!-- End: container -->
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
