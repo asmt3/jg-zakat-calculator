@@ -192,7 +192,7 @@ app.controller('zakatController', function ($scope, $http) {
 		if (animate) {
 			$("body").animate({scrollTop: scrollTargetY}, "slow");
 		} else {
-			$("body").scrollTop(scrollTargetY);	
+			window.scrollTo(0, scrollTargetY);
 		}
 		
 
