@@ -187,10 +187,10 @@ app.controller('zakatController', function ($scope, $http) {
 
 		// scrolls to the top of whatever form is showing
 		var el = $(".zk-intro");
-		var scrollTargetY = el.position().top + el.height() + 80;
+		var scrollTargetY = el.offset().top + el.height() + 80;
 
 		console.log(scrollTargetY)
-		
+
 		if (animate) {
 			$("body").animate({scrollTop: scrollTargetY}, "slow");
 		} else {
