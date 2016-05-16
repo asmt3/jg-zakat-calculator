@@ -100,7 +100,7 @@ textarea {
 .zk-container {
     font-family: 'Roboto', sans-serif;
 }
-.zk-container a.btn{
+.zk-container .btn{
     width:80%;
     padding: 12px 20px; 
     border-radius: 3px;
@@ -108,8 +108,20 @@ textarea {
     border:0;
     color:#fff;
 }
+.zk-container .btn-primary,
+.zk-container .btn-primary:hover,
+.zk-container .btn-primary:active,
+.zk-container .btn-primary:focus,
+.zk-container .btn-primary[disabled]:hover {background:#AC29B5;}
+
 /* Header */
-.zk-banner {background:#00C995 url(../img/zk-banner-mob.png) center no-repeat; height:328px;}
+.zk-banner {background:url(../img/zk-banner-mob.png) bottom center no-repeat #00C995; color:#fff; min-height:328px; text-align: center;}
+
+.zk-banner h1 { font-size:40px; margin-top:22px; font-weight: normal;}
+.zk-banner p { font-size:18px; }
+.zk-banner p .logo {height:17px;}
+.zk-banner p .logo path {fill:green;}
+
 .zk-intro {background:#F5F5F5; padding-top:40px; padding-bottom:40px; text-align:center; border-bottom: solid 1px #cccccc;}
 .zk-intro h2 {font-size:18px; font-weight: 300; color:#262626; margin:0 auto 25px; color:#677081; }
 
@@ -185,7 +197,7 @@ textarea {
 }
 
 /* Stage 1 */
-.zk-stage-1 {padding:30px 0 0;}
+.zk-stage-1 {padding:30px 0 0; }
 .zk-nisab-thresholds {
     margin-top:2em;
     font-size:16px;
@@ -210,6 +222,7 @@ textarea {
     padding-bottom:10px;
 }
 .zk-stage-1 select.form-control {
+    background:url(../img/dropdown-caret.png) no-repeat 97% 27px;
     color:#AC29B5;
     border-left:0;
     border-top-left-radius: 0;
@@ -225,14 +238,13 @@ textarea {
 
 /*.zk-nisab-thresholds {border-left:1px solid #677081; padding-left:80px; font-size: 18px;}*/
 /*.zk-nisab-thresholds p {font-size: 24px;}*/
-.zk-form a.btn-primary {background:#AC29B5; color:#FFF;}
 .zk-stage-1 .zk-calculation-override {margin-top:67px;}
 .zk-calculation-override .input-group {margin-bottom:24px;}
 .zk-calculation-override h3 {font-size: 23px; color: #262626; font-weight: normal; margin-bottom:31px;}
 #net-assets {background-color:#fff;}
 
 /* Stage 2 */
-.zk-stage-2 {padding-top:30px;}
+.zk-stage-2 {padding-top:30px; display: none;}
 .zk-stage-2 .zk-stage-1-summary {
     border-bottom:1px solid #ccc;
 }
@@ -253,7 +265,7 @@ textarea {
 .zk-suggested-charities {}
 
 .zk-recalculate {text-align: center;}
-.zk-recalculate a.btn {border:1px solid #999999; color: #262626;}
+.zk-recalculate .btn {border:1px solid #999999; color: #262626;}
 .zk-suggested-charity {
     text-align: center;
     border:1px solid #CCC;
@@ -280,7 +292,7 @@ a.zk-charity-name {font-size:24px; color:#262626; padding:1em;}
 }
 
 
-.zk-charity-search-form a.btn {
+.zk-charity-search-form .btn {
     width:auto;
     background: #1d67be;
 }
@@ -419,16 +431,24 @@ a.zk-charity-name {font-size:24px; color:#262626; padding:1em;}
 
 @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
-    .zk-container a.btn{ width:260px; font-size: 19px;}
-    .zk-banner {background:#00C995 url(../img/zk-banner-dt.png) center no-repeat; height:356px;}
+    .zk-container .btn{ width:260px; font-size: 19px;}
     .zk-intro h2 {font-size:24px;}
-    .zk-steps p {font-size: 24px; background:none; padding:0; min-height: auto; text-align: center;}
     .zk-stage-1 .form-control {font-size:14px;}
     .zk-stage-1 input.form-control {font-size:14px;}
     .zk-nisab-threshold { font-size:36px; }
     .zk-stage-2 .zk-stage-1-summary p {font-size: 28px;}
     .zk-calculation-override h3 {font-size: 36px;}
 
+}
+
+@media (min-width: 992px) {
+.zk-banner {height:356px; background-image:url(../img/zk-banner-dt.png); }
+.zk-banner h1 { font-size:60px; margin-top:130px;}
+.zk-banner p { font-size:24px; }
+
+}
+@media only screen and (min-width: 768px) {
+    .zk-steps p {font-size: 24px; background:none; padding:0; min-height: auto; text-align: center;}
 }
 
 @media print,

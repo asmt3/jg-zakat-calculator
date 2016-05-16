@@ -20,7 +20,8 @@ app.controller('zakatController', function ($scope, $http) {
 	$scope.formData = {
 		
 		// assets
-		"goldSilver": 0, // if no value, assume 0
+		"value_au": 0, 
+		"value_ag": 0, 
 		"cash": 0,
 		"otherSavings": 0,
 		"investment": 0,
@@ -42,7 +43,7 @@ app.controller('zakatController', function ($scope, $http) {
 	// charity search state
 	$scope.showCharityPicker = false
 	$scope.charityQuery = ""
-	$scope.charities = [
+	$scope.charitySearchResults = [
 		// {
 		// 	name: "Test Name of the Charity",
 		// 	SDIurl: "http://www.google.co.uk",
@@ -66,7 +67,8 @@ app.controller('zakatController', function ($scope, $http) {
 
 		// calculate net assets
 		$scope.formData.netAssets = 
-			+ (Number($scope.formData.goldSilver) || 0) // if NaN, assume 0
+			+ (Number($scope.formData.value_au) || 0) // if NaN, assume 0
+			+ (Number($scope.formData.value_ag) || 0) // if NaN, assume 0
 			+ (Number($scope.formData.cash) || 0)
 			+ (Number($scope.formData.otherSavings) || 0)
 			+ (Number($scope.formData.investment) || 0)
@@ -104,7 +106,7 @@ app.controller('zakatController', function ($scope, $http) {
 	$scope.getStarted = function() {
 
 		$scope.ui_stage = 'form'
-		scrollToToppish();
+		scrollToToppish(true)
 	}
 
 	$scope.useZakatCalculated = function() {
@@ -112,23 +114,30 @@ app.controller('zakatController', function ($scope, $http) {
 
 		
 		$scope.ui_stage = 'search'
-		scrollToToppish();
+		
+		animateToStage2()
 	}
 
 	$scope.useZakatOverride = function() {
 		$scope.formData.zakatDue = $scope.formData.zakatOverride;
 		
 		$scope.ui_stage = 'search'
-		scrollToToppish();
+		
+		animateToStage2()
+	}
+
+	$scope.recalculate = function() {
+		$scope.ui_stage = 'form'
+		showStage1()
 	}
 
 	$scope.searchCharities = function() {
 		
 
 		// clear results
-		$scope.charities = []
+		$scope.charitySearchResults = []
 
-		var url = 'https://api.justgiving.com/1d35ed50/v1/charity/search?pageSize=5&page=1&q=' + $scope.query;
+		var url = 'https://api.justgiving.com/1d35ed50/v1/charity/search?pageSize=5&page=1&q=' + $scope.charityQuery;
 		$http.get(url).success( function(response) {
 
 
@@ -142,7 +151,7 @@ app.controller('zakatController', function ($scope, $http) {
 					+ '&reference=zakat-calc';
 
 
-				$scope.charities.push(charity)
+				$scope.charitySearchResults.push(charity)
 					
 
 			})
@@ -173,14 +182,56 @@ app.controller('zakatController', function ($scope, $http) {
 	}
 
 
-	function scrollToToppish() {
+	function scrollToToppish(animate) {
 
 		// scrolls to the top of whatever form is showing
 		var el = $(".zk-intro");
-
 		var scrollTargetY = el.position().top + el.height() + 80;
-		console.log(scrollTargetY);
-		$("body").animate({scrollTop: scrollTargetY}, "slow");
+
+		if (animate) {
+			$("body").animate({scrollTop: scrollTargetY}, "slow");
+		} else {
+			$("body").scrollTop(scrollTargetY);	
+		}
+		
+
+	}
+
+	function animateToStage2() {
+
+
+		$(".zk-stage-1").animate({opacity:0}, function(){
+
+			
+			$(".zk-stage-2").css({
+				display: "block",
+				opacity: 0
+			})
+
+			scrollToToppish(false)
+
+			$(".zk-stage-1").animate({height:0}, function(){
+				$(".zk-stage-2").animate({
+					opacity:1
+				})
+			})
+
+		})
+	}
+
+	function showStage1() {
+		$(".zk-stage-1").css({
+			display: "block",
+			opacity: 1,
+			height:'auto'
+		});
+
+		$(".zk-stage-2").css({
+			display: "none",
+			opacity: 0
+		});
+
+		scrollToToppish(false)
 
 	}
 
@@ -191,36 +242,36 @@ app.controller('zakatController', function ($scope, $http) {
 })
 
 
-// make nicely formatted donation amount
-.directive('format', ['$filter', function ($filter) {
-    return {
-        require: '?ngModel',
-        link: function (scope, elem, attrs, ctrl) {
-            if (!ctrl) return;
+// // make nicely formatted donation amount
+// .directive('format', ['$filter', function ($filter) {
+//     return {
+//         require: '?ngModel',
+//         link: function (scope, elem, attrs, ctrl) {
+//             if (!ctrl) return;
 
-            ctrl.$formatters.unshift(function (a) {
-                return $filter(attrs.format)(ctrl.$modelValue, '') // no currency symbol
-            });
+//             ctrl.$formatters.unshift(function (a) {
+//                 return $filter(attrs.format)(ctrl.$modelValue, '') // no currency symbol
+//             });
 
-            elem.bind('blur', function(event) {
-                var plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
-                elem.val($filter(attrs.format)(plainNumber, '')); // no currency symbol
-            });
-        }
-    };
-}])
+//             elem.bind('blur', function(event) {
+//                 var plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
+//                 elem.val($filter(attrs.format)(plainNumber, '')); // no currency symbol
+//             });
+//         }
+//     };
+// }])
 
-.directive('scrollOnClick', function() {
-  return {
-    restrict: 'A',
-    link: function(scope, $elm) {
+// .directive('scrollOnClick', function() {
+//   return {
+//     restrict: 'A',
+//     link: function(scope, $elm) {
 
-    	// determine target
-    	var $target = angular.element($elm.attr('href'))
+//     	// determine target
+//     	var $target = angular.element($elm.attr('href'))
 
-      $elm.on('click', function() {
-        $("body").animate({scrollTop: $target.offset().top}, "slow");
-      });
-    }
-  }
-})
+//       $elm.on('click', function() {
+//         $("body").animate({scrollTop: $target.offset().top}, "slow");
+//       });
+//     }
+//   }
+// })
