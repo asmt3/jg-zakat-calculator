@@ -189,6 +189,8 @@ app.controller('zakatController', function ($scope, $http) {
 		var el = $(".zk-intro");
 		var scrollTargetY = el.position().top + el.height() + 80;
 
+		console.log(scrollTargetY)
+		
 		if (animate) {
 			$("body").animate({scrollTop: scrollTargetY}, "slow");
 		} else {
