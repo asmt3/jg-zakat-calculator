@@ -107,13 +107,12 @@ textarea {
     font-size: 17px; 
     border:0;
     color:#fff;
-    text
 }
 .zk-container .btn-primary,
 .zk-container .btn-primary:hover,
 .zk-container .btn-primary:active,
 .zk-container .btn-primary:focus,
-.zk-container .btn-primary[disabled]:hover {background:#AC29B5;}
+.zk-container .btn-primary[disabled]:hover {background:#AC29B5; color:#fff;}
 
 /* Header */
 .zk-banner {background:url(../img/zk-banner-mob.png) bottom center no-repeat #00C995; color:#fff; min-height:328px; text-align: center;}
@@ -172,7 +171,7 @@ textarea {
     width: 60px;
     top:-51px;
     overflow: hidden;
-    left:9px;
+    left:4px;
 
 }
 .zk-container .zk-heading-border-indent .inner {
@@ -246,7 +245,7 @@ textarea {
 #net-assets {background-color:#fff;}
 
 /* Stage 2 */
-.zk-stage-2 {padding-top:30px; display: none;}
+.zk-stage-2 {padding-top:30px;}
 .zk-stage-2 .zk-stage-1-summary {
     border-bottom:1px solid #ccc;
 }
@@ -301,6 +300,7 @@ a.zk-charity-name {font-size:24px; color:#262626; padding:1em;}
 .zk-charity-search-form .btn:hover,
 .zk-charity-search-form .btn:focus {
     background: #1d67be;
+    color:#fff;
 }
 
 .zk-charity-search-form input {

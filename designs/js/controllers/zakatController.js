@@ -115,7 +115,7 @@ app.controller('zakatController', function ($scope, $http) {
 		
 		$scope.ui_stage = 'search'
 		
-		animateToStage2()
+		scrollToToppish(false)
 	}
 
 	$scope.useZakatOverride = function() {
@@ -123,12 +123,13 @@ app.controller('zakatController', function ($scope, $http) {
 		
 		$scope.ui_stage = 'search'
 		
-		animateToStage2()
+		scrollToToppish(false)
 	}
 
 	$scope.recalculate = function() {
 		$scope.ui_stage = 'form'
-		showStage1()
+		
+		scrollToToppish(true)
 	}
 
 	$scope.searchCharities = function() {
@@ -194,44 +195,6 @@ app.controller('zakatController', function ($scope, $http) {
 			$("body").scrollTop(scrollTargetY);	
 		}
 		
-
-	}
-
-	function animateToStage2() {
-
-
-		$(".zk-stage-1").animate({opacity:0}, function(){
-
-			
-			$(".zk-stage-2").css({
-				display: "block",
-				opacity: 0
-			})
-
-			scrollToToppish(false)
-
-			$(".zk-stage-1").animate({height:0}, function(){
-				$(".zk-stage-2").animate({
-					opacity:1
-				})
-			})
-
-		})
-	}
-
-	function showStage1() {
-		$(".zk-stage-1").css({
-			display: "block",
-			opacity: 1,
-			height:'auto'
-		});
-
-		$(".zk-stage-2").css({
-			display: "none",
-			opacity: 0
-		});
-
-		scrollToToppish(false)
 
 	}
 
