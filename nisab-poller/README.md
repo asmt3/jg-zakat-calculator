@@ -5,7 +5,7 @@ This deployment process makes use of the [Node-Lambda](https://www.npmjs.com/pac
 
 1. Create S3 Bucket eg. 
 
-    ```zakat-dev-justgiving-com```
+    ``` zakat-dev-justgiving-com ```
 
 2. Configure S3 CORS eg.
 
