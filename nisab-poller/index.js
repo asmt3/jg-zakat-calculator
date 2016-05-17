@@ -7,7 +7,7 @@ var currencies = ["GBP","USD","EUR","HKD","SGD","CAD","AED","AUD","ZAR"];
 
 
 // For development/testing purposes
-exports.handler = function( event, context ) {
+exports.handler = function( event, context, callback ) {
   
 
 	// get the nisab values
@@ -17,8 +17,9 @@ exports.handler = function( event, context ) {
 		uploader.upload(nisab, onUploadComplete)
 	}
 
-	function onUploadComplete() {
+	function onUploadComplete(err, obj) {
 		console.log('Exiting')
+		callback(err, obj)
 	}
 
 }

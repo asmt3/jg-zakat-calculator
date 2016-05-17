@@ -1,14 +1,22 @@
 var AWS = require('aws-sdk');
 
-exports.upload = function(nisabObj, cb){
+exports.upload = function(nisabObj, callback){
 
 	var s3 = new AWS.S3()
 
-	var key = 'nisab.json'
+	var bucket = 'zakat-dev-justgiving-com'
+	var key = 'nisab-daily.json'
 
-	console.log('Started Uploading Nisab')
+
+	var url = 'https://s3-eu-west-1.amazonaws.com/' + bucket + '/' + key
+
+
+	console.log('Started Uploading Nisab object: ')
+	console.dir(nisabObj);
+
+	// upload
 	s3.putObject({
-		Bucket: 'zakat-dev-justgiving-com',
+		Bucket: bucket,
 		Key: key,
 		ACL:'public-read',
 		Body: JSON.stringify(nisabObj)
@@ -16,10 +24,15 @@ exports.upload = function(nisabObj, cb){
 
 	    if (err) {
 	      console.log('Error uploading: ' + err)
+	      // report error
+	      callback(err, nisabObj)
 	    } else {
 	      
-	      console.log('Completed Uploading Nisab')
-	      cb()
+	      console.log('Completed Uploading Nisab: ' + url)
+	      callback(null, {
+	      	url:url,
+	      	nisab:nisabObj
+	      })
 
 	    }
 

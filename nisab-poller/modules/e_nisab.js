@@ -44,30 +44,16 @@ exports.get = function(currencies, callback) {
 
 	function cleanAndCallback(responses) {
 
+		console.log(responses)
 		// extract the thresholds we care about
 		var responsesClean = responses.map(function(response){
 			return {
 				timestamp_ms: Date.parse(response.timestamp),
-				name: response.currency,
-				// we use silver threshold only
-				// rounded to 2 dp
-				threshold: Number(Number(response.ag_nisab_j).toFixed(2)) 
+				"code": response.currency,
+				// rounded to 2 dp				
+				"threshold_au": Number(Number(response.au_nisab).toFixed(2)),
+				"threshold_ag": Number(Number(response.ag_nisab_j).toFixed(2))
 			}
-		})
-
-		// reorder according to order of currencies supplied
-		responsesClean.sort(function(a,b){
-
-
-			var pos_a = currencies.indexOf(a.name)
-			var pos_b = currencies.indexOf(b.name)
-
-			if (pos_a > pos_b)
-			    return 1;
-			else if (pos_a < pos_b)
-				return -1;
-			else 
-				return 0;
 		})
 
 		callback({
