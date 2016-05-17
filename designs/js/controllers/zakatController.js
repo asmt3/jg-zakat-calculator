@@ -1,5 +1,55 @@
-// var nisabSourceURL = 'https://s3-eu-west-1.amazonaws.com/zakat-dev-justgiving-com/nisab.json'
-var nisabSourceURL = 'data/nisab.json'
+var nisabSourceURL = 'https://s3-eu-west-1.amazonaws.com/zakat-dev-justgiving-com/nisab-daily.json'
+// var nisabSourceURL = 'data/nisab.json'
+
+// currencies defined here will augmented by nisab figures,
+// if they exist... and then fed into the zakat contoller scope
+var desiredCurrencies = [
+	{
+		"code": "GBP",
+		"name": "GBP (Great British Pounds)",
+		"symbol": "&pound;"
+	},
+	{
+		"code": "USD",
+		"name": "USD  (US Dollars)",
+		"symbol": "$"
+	},
+	{
+		"code": "EUR (Euros)",
+		"name": "EUR",
+		"symbol": "&euro;"
+	},
+	{
+		"code": "HKD",
+		"name": "HKD (Hong Kong Dollars)",
+		"symbol": "HK$"
+	},
+	{
+		"code": "SGD",
+		"name": "SGD (Singapore Dollars)",
+		"symbol": "SG$"
+	},
+	{
+		"code": "CAD",
+		"name": "CAD (Canadian Dollars)",
+		"symbol": "$"
+	},
+	{
+		"code": "AED",
+		"name": "AED (United Arab Emirates Dirhams)",
+		"symbol": "د.إ"
+	},
+	{
+		"code": "AUD",
+		"name": "AUD (Australian Dollars)",
+		"symbol": "$"
+	},
+	{
+		"code": "ZAR",
+		"name": "ZAR (South African Rand)",
+		"symbol": "R"
+	}
+]
 
 app.controller('zakatController', function ($scope, $http) {
 
@@ -170,7 +220,7 @@ app.controller('zakatController', function ($scope, $http) {
 			$http.get(nisabSourceURL).success( function(response) {
 
 				// load nisab values
-				$scope.nisab = response
+				$scope.nisab = filterNisabResponse(response)
 
 				// set default currency as the first in the list
 				$scope.selectedCurrency = $scope.nisab.currencies[0]
@@ -180,6 +230,45 @@ app.controller('zakatController', function ($scope, $http) {
 
 			})
 		}, simulatedDelay)
+	}
+
+	function filterNisabResponse(response) {
+
+		var nisabValues = []
+
+
+		for (var i = 0; i < desiredCurrencies.length; i++) {
+			var desiredCurrency = desiredCurrencies[i]
+
+			console.log(desiredCurrency);
+
+			// augment with nisab values
+
+			// first, are there any currencies with this code
+			var nisabValue = response.currencies.filter(function(currency){
+
+				console.log(currency)
+				return currency.code == desiredCurrency.code
+			})
+
+			console.log(nisabValue)
+
+			// as long as there was, add the thresholds
+			if (nisabValue.length) {
+
+				desiredCurrency.threshold_au = nisabValue[0].threshold_au
+				desiredCurrency.threshold_ag = nisabValue[0].threshold_ag
+
+				nisabValues.push(desiredCurrency)
+			}
+
+		};
+
+		var filteredResponse = response
+		filteredResponse.currencies = nisabValues
+
+		return filteredResponse;
+		
 	}
 
 
@@ -205,38 +294,3 @@ app.controller('zakatController', function ($scope, $http) {
 
 
 })
-
-
-// // make nicely formatted donation amount
-// .directive('format', ['$filter', function ($filter) {
-//     return {
-//         require: '?ngModel',
-//         link: function (scope, elem, attrs, ctrl) {
-//             if (!ctrl) return;
-
-//             ctrl.$formatters.unshift(function (a) {
-//                 return $filter(attrs.format)(ctrl.$modelValue, '') // no currency symbol
-//             });
-
-//             elem.bind('blur', function(event) {
-//                 var plainNumber = elem.val().replace(/[^\d|\-+|\.+]/g, '');
-//                 elem.val($filter(attrs.format)(plainNumber, '')); // no currency symbol
-//             });
-//         }
-//     };
-// }])
-
-// .directive('scrollOnClick', function() {
-//   return {
-//     restrict: 'A',
-//     link: function(scope, $elm) {
-
-//     	// determine target
-//     	var $target = angular.element($elm.attr('href'))
-
-//       $elm.on('click', function() {
-//         $("body").animate({scrollTop: $target.offset().top}, "slow");
-//       });
-//     }
-//   }
-// })

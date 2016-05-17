@@ -309,7 +309,7 @@ a.zk-charity-name {font-size:24px; color:#262626; padding:1em;}
 }
 
 /*Search Results*/
-.zt-charity-search-results .zk-charity-list {
+.zk-charity-search-results .zk-charity-list {
     
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
     border: solid 1px #cccccc;
@@ -317,33 +317,30 @@ a.zk-charity-name {font-size:24px; color:#262626; padding:1em;}
     background:#fff;
     margin-bottom:32px;
 
-    /*z-index:999;
-    position: absolute;
-    width:720px;*/
 }
 
-.zt-charity-search-results table td {
+.zk-charity-search-results table td {
     vertical-align: middle;
     border-bottom: solid 1px #cccccc;
 }
 
-.zt-charity-search-results table td a {
+.zk-charity-search-results table td a {
     color:#262626;
     font-size: 24px;
 }
-.zt-charity-search-results .zk-charity-logo .zk-inner{
+.zk-charity-search-results .zk-charity-logo .zk-inner{
     float:left;
     height:93px;
     width:93px;
     margin:12px;
     text-align: center;
 }
-.zt-charity-search-results .zk-charity-logo img {
+.zk-charity-search-results .zk-charity-logo img {
     max-width: 100%;
     max-height: 100%
 }
 
-.zt-charity-search-results .zk-charity-name {
+.zk-charity-search-results .zk-charity-name {
     width:100%;
 }
 
