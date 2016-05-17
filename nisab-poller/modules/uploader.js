@@ -4,9 +4,8 @@ exports.upload = function(nisabObj, callback){
 
 	var s3 = new AWS.S3()
 
-	var bucket = 'zakat-dev-justgiving-com'
-	var key = 'nisab-daily.json'
-
+	var bucket = process.env.S3_BUCKET_NAME
+	var key = process.env.NISAB_FILE_NAME
 
 	var url = 'https://s3-eu-west-1.amazonaws.com/' + bucket + '/' + key
 
