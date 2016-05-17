@@ -1,6 +1,5 @@
 app.controller('zakatController', function ($scope, $http, $window) {
 
-
 	// UI stage [loading | form | search]
 	$scope.ui_stage = 'loading';
 
