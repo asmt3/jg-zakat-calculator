@@ -467,59 +467,31 @@
             </div>
 
             <div class="row zk-suggested-charities">
-                <div class="col-md-4">
-                    <div class="zk-suggested-charity">
-                        <div class="zk-inner">
-                            <img src="img/stock/charity-logo.jpg" class="zk-logo">
-                            <a class="zk-charity-name">
-                                Charity Name
-                            </a>
-                            <p class="zk-charity-desc">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-                            </p>
-                            <p class="zk-charity-reg">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                
 
-                <div class="col-md-4 hidden-xs">
-                    <div class="zk-suggested-charity">
-                        <div class="zk-inner">
-                            <img src="img/stock/charity-logo.jpg" class="zk-logo">
-                            <a class="zk-charity-name">
-                                Charity Name
-                            </a>
-                            <p class="zk-charity-desc">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-                            </p>
-                            <p class="zk-charity-reg">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
-                            </p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-4 hidden-xs">
-                    <div class="zk-suggested-charity">
-                        <div class="zk-inner">
-                            <img src="img/stock/charity-logo.jpg" class="zk-logo">
-                            <a class="zk-charity-name">
-                                Charity Name
-                            </a>
-                            <p class="zk-charity-desc">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-                            </p>
-                            <p class="zk-charity-reg">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                @@include('./suggested-charity-no-cta.html', {
+                    "charity_id": "charity_id",
+                    "charity_name": "charity_name",
+                    "charity_logo_url": "charity_logo_url",
+                    "charity_description": "charity_description",
+                    "charity_reg_info": "charity_reg_info"
+                })
+                @@include('./suggested-charity-no-cta.html', {
+                    "charity_id": "charity_id",
+                    "charity_name": "charity_name",
+                    "charity_logo_url": "charity_logo_url",
+                    "charity_description": "charity_description",
+                    "charity_reg_info": "charity_reg_info"
+                })
+                @@include('./suggested-charity-no-cta.html', {
+                    "charity_id": "charity_id",
+                    "charity_name": "charity_name",
+                    "charity_logo_url": "charity_logo_url",
+                    "charity_description": "charity_description",
+                    "charity_reg_info": "charity_reg_info"
+                })
+                
             </div>
         </div>
     </div> <!-- End Suggested Charities (Stage 1) -->

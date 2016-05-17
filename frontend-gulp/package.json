@@ -8,7 +8,9 @@
     "gulp-concat": "^2.6.0",
     "gulp-concat-css": "^2.2.0",
     "gulp-file-include": "^0.13.7",
-    "gulp-s3": "^0.3.0"
+    "gulp-htmltidy": "^0.2.2",
+    "gulp-s3": "^0.3.0",
+    "htmltidy": "0.0.6"
   },
   "devDependencies": {},
   "scripts": {

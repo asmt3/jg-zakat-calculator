@@ -58,7 +58,16 @@ var desiredCurrencies = [
 		"symbol": "R"
 	}
 ];
-var app = angular.module('zakat', ['ui.bootstrap', 'ngSanitize']);
+var app = angular
+	.module('zakat', ['ui.bootstrap', 'ngSanitize'])
+	.config(function($sceDelegateProvider) {
+	  $sceDelegateProvider.resourceUrlWhitelist([
+	    // Allow same origin resource loads.
+	    'self',
+	    // Allow loading from outer templates domain.
+	    'https://s3-eu-west-1.amazonaws.com/zakat-dev-justgiving-com/**'
+	  ]); 
+	});
 
 
 app.controller('zakatController', function ($scope, $http, $window) {
@@ -252,7 +261,7 @@ app.controller('zakatController', function ($scope, $http, $window) {
 
 
 	// LOAD NISAB VALUES
-	function getNisabValuesByCurrency() {
+	$scope.getNisabValuesByCurrency = function() {
 		
 		$http.get(nisabSourceURL).success( function(response) {
 
@@ -298,9 +307,6 @@ app.controller('zakatController', function ($scope, $http, $window) {
 		return filteredResponse;
 		
 	};
-
-	
-	getNisabValuesByCurrency();
 
 
 });

@@ -3,18 +3,17 @@
     >
     <div class="zk-suggested-charity">
         <div class="zk-inner">
-            <img src="img/stock/charity-logo.jpg" class="zk-logo">
+            <img src="@@charity_logo_url" class="zk-logo">
             <a class="zk-charity-name">
-                @@name
+                @@charity_name
             </a>
             <p class="zk-charity-desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                @@charity_description
             </p>
             <p class="zk-charity-reg">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                @@charity_reg_info
             </p>
-            <a class="btn zk-cta" href="http://www.justgiving.com">Donate</a>
+            <a class="btn zk-cta" href="'http://www.justgiving.com/4w350m3/donation/direct/charity/@@charity_id/?amount={{$scope.formData.zakatDue}}&amp;currency={{$scope.selectedCurrency.name}}&amp;reference=zakat-calc">Donate</a>
         </div>
     </div>
 </div>

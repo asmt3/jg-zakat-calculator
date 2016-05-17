@@ -9,37 +9,48 @@ var fileinclude = require('gulp-file-include'),
 
 gulp.task('default', [
 	'makestandard',
-	'copyimages',
-	'makeumbraco',
+  'makeapp',
+	'makeumbracocontainer',
+  'copyimages',
 	'scripts',
 	'styles',
 	'upload'
 ]);
 
-gulp.task('upload', function() {
-	aws = JSON.parse(fs.readFileSync('./aws.json'));
 
-	return gulp.src('./dist/**')
-		    .pipe(s3(aws));
+gulp.task('upload', function() {
+  aws = JSON.parse(fs.readFileSync('./aws.json'));
+
+  return gulp.src('./dist/**')
+        .pipe(s3(aws));
 
 });
  
 gulp.task('makestandard', function() {
-  return gulp.src(['./src/templates/tpl-standard.html'])
+  return gulp.src(['./src/templates/standard.html'])
     .pipe(fileinclude({
       prefix: '@@',
       basepath: '@file'
     }))
-    .pipe(gulp.dest('dist/standard.html'));
+    .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('makeumbraco', function() {
-  return gulp.src(['./src/templates/tpl-umbraco.html'])
+gulp.task('makeapp', function() {
+  return gulp.src(['./src/templates/app.html'])
     .pipe(fileinclude({
       prefix: '@@',
       basepath: '@file'
     }))
-    .pipe(gulp.dest('dist/umbraco.html'));
+    .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('makeumbracocontainer', function() {
+  return gulp.src(['./src/templates/umbraco-container.html'])
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+    .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('copyimages', function() {

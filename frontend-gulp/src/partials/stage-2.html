@@ -51,14 +51,28 @@
 
         <!-- Suggested Charities -->
         <div class="row zk-suggested-charities">
-
-        	
             
             @@include('./suggested-charity-with-donate-btn.html', {
-	            "name": "value"
+	            "charity_id": "charity_id",
+                "charity_name": "charity_name",
+                "charity_logo_url": "charity_logo_url",
+                "charity_description": "charity_description",
+                "charity_reg_info": "charity_reg_info"
 	        })
-            @@include('./suggested-charity-with-donate-btn.html')
-            @@include('./suggested-charity-with-donate-btn.html')
+            @@include('./suggested-charity-with-donate-btn.html', {
+                "charity_id": "charity_id",
+                "charity_name": "charity_name",
+                "charity_logo_url": "charity_logo_url",
+                "charity_description": "charity_description",
+                "charity_reg_info": "charity_reg_info"
+            })
+            @@include('./suggested-charity-with-donate-btn.html', {
+                "charity_id": "charity_id",
+                "charity_name": "charity_name",
+                "charity_logo_url": "charity_logo_url",
+                "charity_description": "charity_description",
+                "charity_reg_info": "charity_reg_info"
+            })
 
         </div> <!-- End: Suggested Charities -->
 

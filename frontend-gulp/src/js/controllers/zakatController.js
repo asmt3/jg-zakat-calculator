@@ -189,7 +189,7 @@ app.controller('zakatController', function ($scope, $http, $window) {
 
 
 	// LOAD NISAB VALUES
-	function getNisabValuesByCurrency() {
+	$scope.getNisabValuesByCurrency = function() {
 		
 		$http.get(nisabSourceURL).success( function(response) {
 
@@ -235,9 +235,6 @@ app.controller('zakatController', function ($scope, $http, $window) {
 		return filteredResponse;
 		
 	};
-
-	
-	getNisabValuesByCurrency();
 
 
 });
