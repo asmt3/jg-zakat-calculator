@@ -1,4 +1,4 @@
-app.controller('zakatController', function ($scope, $http) {
+app.controller('zakatController', function ($scope, $http, $window) {
 
 
 	// UI stage [loading | form | search]
@@ -91,8 +91,11 @@ app.controller('zakatController', function ($scope, $http) {
 
 	}
 
+
+	// STAGE CHANGES / UI ANIMATIONS
 	$scope.showCalculator = function() {
 
+console.log($window.ga);
 		$scope.ui_stage = 'form'
 
 		// For debugging
@@ -108,27 +111,53 @@ app.controller('zakatController', function ($scope, $http) {
 
 	$scope.useZakatCalculated = function() {
 		$scope.formData.zakatDue = $scope.formData.zakatCalculated;
-
-		
 		$scope.ui_stage = 'search'
-		
 		scrollToToppish(false)
+
+		// register events with GA
+		if ($scope.formData.selectedNisabBase == 'silver') {
+			$window.ga('send', 'event', 'zakat', 'select', 'sivlernisab')
+		} else {
+			$window.ga('send', 'event', 'zakat', 'select', 'goldnisab')	
+		}
+		$window.ga('send', 'event', 'zakat', 'click', 'calculate')
+		
 	}
 
 	$scope.useZakatOverride = function() {
 		$scope.formData.zakatDue = $scope.formData.zakatOverride;
-		
 		$scope.ui_stage = 'search'
-		
 		scrollToToppish(false)
+
+		// register event with GA
+		$window.ga('send', 'event', 'zakat', 'click', 'ownamount')
 	}
 
 	$scope.recalculate = function() {
 		$scope.ui_stage = 'form'
-		
 		scrollToToppish(true)
+
+		// register event with GA
+		$window.ga('send', 'event', 'zakat', 'click', 'recalculate')
 	}
 
+	function scrollToToppish(animate) {
+
+		// scrolls to the top of whatever form is showing
+		var el = $(".zk-intro");
+		var scrollTargetY = el.offset().top + el.height() + 80;
+
+		if (animate) {
+			$("html,body").animate({scrollTop: scrollTargetY}, "slow");
+		} else {
+			window.scrollTo(0, scrollTargetY);
+		}
+
+	}
+
+
+
+	// SEARCH
 	$scope.searchCharities = function() {
 		
 
@@ -157,6 +186,8 @@ app.controller('zakatController', function ($scope, $http) {
 
 	}
 
+
+	// LOAD NISAB VALUES
 	function getNisabValuesByCurrency() {
 		// load nisab values
 
@@ -183,22 +214,14 @@ app.controller('zakatController', function ($scope, $http) {
 
 		var nisabValues = []
 
-
 		for (var i = 0; i < desiredCurrencies.length; i++) {
 			var desiredCurrency = desiredCurrencies[i]
 
-			console.log(desiredCurrency);
-
-			// augment with nisab values
-
+			// Augment with nisab values:
 			// first, are there any currencies with this code
 			var nisabValue = response.currencies.filter(function(currency){
-
-				console.log(currency)
 				return currency.code == desiredCurrency.code
 			})
-
-			console.log(nisabValue)
 
 			// as long as there was, add the thresholds
 			if (nisabValue.length) {
@@ -216,24 +239,6 @@ app.controller('zakatController', function ($scope, $http) {
 
 		return filteredResponse;
 		
-	}
-
-
-	function scrollToToppish(animate) {
-
-		// scrolls to the top of whatever form is showing
-		var el = $(".zk-intro");
-		var scrollTargetY = el.offset().top + el.height() + 80;
-
-		console.log(scrollTargetY)
-
-		if (animate) {
-			$("html,body").animate({scrollTop: scrollTargetY}, "slow");
-		} else {
-			window.scrollTo(0, scrollTargetY);
-		}
-		
-
 	}
 
 	

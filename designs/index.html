@@ -189,7 +189,6 @@
                             <div class="input-group">
                                 <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
                                 <input
-                                    select-on-click
                                     ng-change="updateZakatCalculated()" 
                                     type="number"
                                     min="0" 
@@ -209,7 +208,6 @@
                             <div class="input-group">
                                 <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
                                 <input
-                                    select-on-click
                                     ng-change="updateZakatCalculated()" 
                                     type="number"
                                     min="0" 
@@ -808,7 +806,7 @@
                 </div> <!-- End: Search Form -->
 
                 <!-- Search Results -->
-                <div class="row zd-charity-search-results">
+                <div class="row zk-charity-search-results">
                     <div class="col-md-8 col-md-offset-2">
 
                         <div class="zk-charity-list">
@@ -822,7 +820,10 @@
                                                 ng-href="{{ charity.SDIurl }}" 
                                                 role="button"
                                                 >
-                                                <img ng-src="{{ charity.logoUrl }}?template=size100x100" width="64">
+                                                <img 
+                                                    ng-src="{{ charity.logoUrl }}?template=size100x100" 
+                                                    width="64"
+                                                >
                                             </a>
                                         </div>
                                     </td>
