@@ -4,7 +4,7 @@
 
 // NISAB figures
 // the URL of scraped Nisab figures
-var nisabSourceURL = 'https://s3-eu-west-1.amazonaws.com/zakat-dev-justgiving-com/nisab-daily.json'
+var nisabSourceURL = 'https://s3-eu-west-1.amazonaws.com/zakat-dev-justgiving-com/nisab-daily.json';
 
 // used for debugging
 // var nisabSourceURL = 'data/nisab.json'
@@ -57,4 +57,4 @@ var desiredCurrencies = [
 		"name": "ZAR (South African Rand)",
 		"symbol": "R"
 	}
-]
+];
