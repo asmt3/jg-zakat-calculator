@@ -7,6 +7,7 @@ This deployment process makes use of the [Node-Lambda](https://www.npmjs.com/pac
     ```zakat-dev-justgiving-com```
 
 2. Configure S3 CORS eg.
+
     ```
     <CORSConfiguration>
         <CORSRule>
@@ -18,23 +19,23 @@ This deployment process makes use of the [Node-Lambda](https://www.npmjs.com/pac
 
 3. Create an AWS role for the lambda function with a policy document as follows:
 
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "s3:*"
-            ],
-            "Resource": [
-                "arn:aws:s3:::zakat-dev-justgiving-com",
-                "arn:aws:s3:::zakat-dev-justgiving-com/*"
-            ]
-        }
-    ]
-}
-```
+    ```
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "s3:*"
+                ],
+                "Resource": [
+                    "arn:aws:s3:::zakat-dev-justgiving-com",
+                    "arn:aws:s3:::zakat-dev-justgiving-com/*"
+                ]
+            }
+        ]
+    }
+    ```
 
 4. Take note of the Role ARN
 
@@ -47,24 +48,25 @@ This deployment process makes use of the [Node-Lambda](https://www.npmjs.com/pac
 2. Install node-lambda using ```npm install -g node-lambda```
 
 3. Create a file called ```.env``` in this folder using this template, filling in the values marked with ***
-```
-AWS_ENVIRONMENT=production
-AWS_ACCESS_KEY_ID=***
-AWS_SECRET_ACCESS_KEY=***
-AWS_SESSION_TOKEN=
-AWS_ROLE_ARN=***
-AWS_REGION=eu-west-1
-AWS_FUNCTION_NAME=ZakatNisabPollAndSave
-AWS_HANDLER=index.handler
-AWS_MEMORY_SIZE=128
-AWS_TIMEOUT=30
-AWS_DESCRIPTION=
-AWS_RUNTIME=nodejs4.3
-AWS_VPC_SUBNETS=
-AWS_VPC_SECURITY_GROUPS=
-EXCLUDE_GLOBS="event.json"
-PACKAGE_DIRECTORY=build
-```
+
+    ```
+    AWS_ENVIRONMENT=production
+    AWS_ACCESS_KEY_ID=***
+    AWS_SECRET_ACCESS_KEY=***
+    AWS_SESSION_TOKEN=
+    AWS_ROLE_ARN=***
+    AWS_REGION=eu-west-1
+    AWS_FUNCTION_NAME=ZakatNisabPollAndSave
+    AWS_HANDLER=index.handler
+    AWS_MEMORY_SIZE=128
+    AWS_TIMEOUT=30
+    AWS_DESCRIPTION=
+    AWS_RUNTIME=nodejs4.3
+    AWS_VPC_SUBNETS=
+    AWS_VPC_SECURITY_GROUPS=
+    EXCLUDE_GLOBS="event.json"
+    PACKAGE_DIRECTORY=build
+    ```
 
 4. Check that everything is working by testing locally ```node-lambda run```
 5. Deploy ```node-lambda deploy```
