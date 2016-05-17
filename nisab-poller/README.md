@@ -81,7 +81,7 @@ This deployment process makes use of the [Node-Lambda](https://www.npmjs.com/pac
         NISAB_FILE_NAME="nisab-daily.json"
     ```
 
-2. Deploy ```node-lambda deploy```
+2. Deploy ```node-lambda deploy --configFile deploy.env```
 3. Log into AWS Console for Lambda (https://eu-west-1.console.aws.amazon.com/lambda/)
 4. Find the function 'ZakatNisabPollAndSave'
 5. Click "Test". You should get a response "Execution result: succeeded" and you should see function output like this:
