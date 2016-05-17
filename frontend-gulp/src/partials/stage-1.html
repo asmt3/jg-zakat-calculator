@@ -1,0 +1,530 @@
+<!-- Stage 1: Calculation Stage-->
+<div 
+    class="zk-stage-1 hidden-until-nisab-loaded"
+    ng-show=" ui_stage == 'form' "
+>
+
+    <div class="container">
+        
+        <div class="row stage-heading">
+            <div class="col-sm-1 col-xs-2">
+                <span class="zk-heading-border-indent"><div class="inner"></div></span>
+                <span class="zk-heading-circle"><div class="inner">1</div></span>
+
+            </div>
+            <div class="col-sm-11 col-xs-10">
+                <h3>Calculate Your Zakat</h3>
+            </div>
+
+        </div>
+        
+        
+        <div class="row">
+
+            <!-- Zakat Form -->
+
+            <div class="col-md-5 col-md-offset-1 zk-form">
+
+            <!-- Currency -->
+
+
+                <div class="form-group">
+                    <label for="currency">Select Your Currency</label>
+                    
+                    <div class="input-group">
+
+                        <div 
+                            class="input-group-addon" 
+                            ng-bind-html="selectedCurrency.symbol">
+                        </div>
+
+                        <select 
+                            id="currency"
+                            class="form-control" 
+                            ng-model="selectedCurrency"
+                            ng-options="currency.name for currency in nisab.currencies track by currency.name"
+                        ></select>
+
+                    </div>
+                </div>
+
+
+                
+                <!-- Value of Gold you possess -->
+                <div class="form-group">
+                    <label 
+                        class="control-label 
+                        " for="value_au">
+                        Value of Gold you possess
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
+                        <input
+                            ng-change="updateZakatCalculated()" 
+                            type="number"
+                            min="0" 
+                            class="form-control"
+                            id="value_au"
+                            ng-model="formData.value_au"> 
+                    </div>
+                </div>
+
+                <!-- Value of Gold &amp; Silver you possess -->
+                <div class="form-group">
+                    <label 
+                        class="control-label 
+                        " for="value_ag">
+                        Value of Silver you possess
+                    </label>
+                    <div class="input-group">
+                        <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
+                        <input
+                            ng-change="updateZakatCalculated()" 
+                            type="number"
+                            min="0" 
+                            class="form-control"
+                            id="value_ag"
+                            ng-model="formData.value_ag"> 
+                    </div>
+                </div>
+
+
+                <!-- Cash at Home & Bank Accounts -->
+                <div class="form-group">
+                    <label 
+                        class="control-label" for="cash">
+                        Cash at Home &amp; Bank Accounts
+                    </label>
+
+                    
+                    <div class="input-group">
+                        <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
+                          <input
+                            ng-change="updateZakatCalculated()" 
+                            type="number"
+                            min="0" 
+                            class="form-control"
+                            id="cash"
+                            ng-model="formData.cash">
+                        </div>
+                  </div>
+
+
+
+        <!-- Other Savings -->
+
+
+
+
+                <div class="form-group">
+                    <label 
+                        class="control-label" for="other-savings">
+                        Other Savings
+                    </label>
+
+                    
+                    <div class="input-group">
+                        <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
+                          <input
+                            ng-change="updateZakatCalculated()" 
+                            type="number"
+                            min="0" 
+                            class="form-control"
+                            id="other-savings"
+                            ng-model="formData.otherSavings">
+                      </div>
+                  </div>
+
+
+
+
+
+
+        <!-- Investment & Share Values -->
+
+
+
+
+                <div class="form-group">
+                    <label 
+                        class="control-label" for="investment">
+                        Investment &amp; Share Values
+                    </label>
+
+                    
+                    <div class="input-group">
+                        <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
+                          <input
+                            ng-change="updateZakatCalculated()" 
+                            type="number"
+                            min="0" 
+                            class="form-control"
+                            id="investment"
+                            ng-model="formData.investment">
+                      </div>
+                  </div>
+
+
+
+
+
+
+        <!-- Money owed to you -->
+
+
+
+
+                <div class="form-group">
+                    <label 
+                        class="control-label" for="owed-in">
+                        Money owed to you
+                    </label>
+
+                    
+                    <div class="input-group">
+                        <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
+                          <input
+                            ng-change="updateZakatCalculated()" 
+                            type="number"
+                            min="0" 
+                            class="form-control"
+                            id="owed-in"
+                            ng-model="formData.owedIn"
+                            >
+                        </div>
+                  </div>
+
+
+
+
+
+
+        <!-- Stock Value -->
+
+
+
+
+                <div class="form-group">
+                    <label 
+                        class="control-label" for="stock-value">
+                        Stock Value
+                    </label>
+
+                    
+                    <div class="input-group">
+                        <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
+                      <input
+                        ng-change="updateZakatCalculated()" 
+                        type="number"
+                        min="0" 
+                        class="form-control"
+                        id="stock-value"
+                        ng-model="formData.stockValue">
+                    </div>
+                  </div>
+
+
+
+
+
+
+        <!-- Money You Owe -->
+
+
+                <div class="form-group">
+                    <label 
+                        class="control-label" for="owed-out">
+                        Money You Owe
+                    </label>
+
+                    
+                    <div class="input-group">
+                        <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
+                      <input
+                        ng-change="updateZakatCalculated()" 
+                        type="number"
+                        min="0" 
+                        class="form-control"
+                        id="owed-out"
+                        ng-model="formData.owedOut"
+                        >
+                    </div>
+                  </div>
+
+
+        <!-- Other Outgoings Due -->
+
+
+
+
+                <div class="form-group">
+                    <label 
+                        class="control-label" for="other-outgoings-due">
+                        Other Outgoings Due
+                    </label>
+
+                    
+                    <div class="input-group">
+                        <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
+                      <input
+                        ng-change="updateZakatCalculated()" 
+                        type="number"
+                        min="0" 
+                        class="form-control"
+                        id="other-outgoings-due"
+                        ng-model="formData.otherOutgoingsDue">
+                      
+                    </div>
+                  </div>
+
+
+
+
+
+
+        <!-- Net Assets -->
+
+                <div class="form-group">
+                    <label 
+                        class="control-label" for="net-assets">
+                        Net Assets
+                    </label>
+
+                    
+                    <div class="input-group">
+                        <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
+                      <input
+                        ng-change="updateZakatCalculated()" 
+                        type="number"
+                        min="0" 
+                        readonly="readonly"
+                        class="form-control"
+                        ng-model="formData.netAssets" 
+                        id="net-assets">
+                    </div>
+                </div>
+
+
+        <!-- Base Nisab value on  -->
+
+                <div class="form-group">
+                    <label 
+                        class="control-label" for="base-nisab">
+                        Base Nisab value on
+                    </label>
+
+
+
+                    <div class="input-group">
+
+                        <div 
+                            class="input-group-addon">
+                            &nbsp;
+                        </div>
+
+                        <select 
+                            id="base-nisab"
+                            class="form-control" 
+                            ng-model="selectedNisabBase"
+                            ng-change="updateZakatCalculated()" 
+                        >
+                            <option 
+                                value="silver"
+                                >
+                                Silver
+                            </option>
+
+                            <option 
+                                value="gold"
+                            >
+                                Gold
+                            </option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+
+        <!-- Calculate CTA -->
+
+                <button
+                    class="btn btn-primary"
+                    ng-click="useZakatCalculated()"
+                    ng-disabled=" (formData.zakatCalculated <= 0) "
+                >
+                    Calculate your Zakat
+                </button>
+
+
+            </div> <!-- End Zakat Form -->
+
+
+            <!-- Zakat Threshold Values -->
+            <div class="col-md-offset-2 col-md-4">
+
+                <div class="zk-nisab-thresholds">
+                    <h3>Current Values</h3>
+                    <dl>
+                        <dt>Silver Nisab</dt>
+                        <dd class='zk-nisab-threshold-gold'>
+                            <span 
+                                class="zk-currency-symbol" 
+                                ng-bind-html="selectedCurrency.symbol">
+                            </span>
+                            <span class="zk-nisab-threshold">
+                                {{selectedCurrency.threshold_ag | currency : ''}}
+                                (for 87.5g)
+                            </span>
+                        </dd>
+
+                        <dt>Gold Nisab</dt>
+                        <dd class='zk-nisab-threshold-silver'>
+                            <span 
+                                class="zk-currency-symbol"
+                                ng-bind-html="selectedCurrency.symbol"
+                            >
+                                
+                            </span>
+                            <span class="zk-nisab-threshold">
+                                {{selectedCurrency.threshold_au | currency : ''}}
+                                (for 625g)
+                            </span>
+                        </dd>
+                    </dl>
+                </div> <!-- End .zk-nisab-thresholds -->
+
+            </div>
+        </div>
+    </div> <!-- End Container -->
+
+
+    <!-- Zakat Override -->
+    <div class="container zk-calculation-override">
+
+
+        <div class="row">
+            <div class="col-md-11 col-md-offset-1">
+                <h3>
+                    I already know the amount I want to give
+                </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+
+                <div class="form-group">
+
+                    
+
+
+                    <label 
+                        class="control-label" for="zakat-override">
+                        Zakat Amount
+                    </label>
+
+                    <div class="input-group">
+                        <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
+                        <input 
+                            type="number" 
+                            format="currency"
+                            class="form-control"
+                            ng-model="formData.zakatOverride"
+                            id="zakat-override">
+                    </div>
+
+                    <!-- Calculation Override CTA -->
+
+                    <button 
+                        class="btn btn-primary" 
+                        ng-click="useZakatOverride()"
+                        ng-disabled=" (formData.zakatOverride <= 0) "
+                        >
+                        Continue
+                    </button>
+
+                            
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- Suggested Charities (Stage 1) -->
+    <div class="suggested-charities-stage-1">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Suggested Zakat Charities</h2>
+                    <p>Here are some charities you can support with your Zakat Giving</p>
+                </div>
+            </div>
+
+            <div class="row zk-suggested-charities">
+                <div class="col-md-4">
+                    <div class="zk-suggested-charity">
+                        <div class="zk-inner">
+                            <img src="img/stock/charity-logo.jpg" class="zk-logo">
+                            <a class="zk-charity-name">
+                                Charity Name
+                            </a>
+                            <p class="zk-charity-desc">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                            </p>
+                            <p class="zk-charity-reg">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 hidden-xs">
+                    <div class="zk-suggested-charity">
+                        <div class="zk-inner">
+                            <img src="img/stock/charity-logo.jpg" class="zk-logo">
+                            <a class="zk-charity-name">
+                                Charity Name
+                            </a>
+                            <p class="zk-charity-desc">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                            </p>
+                            <p class="zk-charity-reg">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 hidden-xs">
+                    <div class="zk-suggested-charity">
+                        <div class="zk-inner">
+                            <img src="img/stock/charity-logo.jpg" class="zk-logo">
+                            <a class="zk-charity-name">
+                                Charity Name
+                            </a>
+                            <p class="zk-charity-desc">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+                            </p>
+                            <p class="zk-charity-reg">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Suggested Charities (Stage 1) -->
+
+
+
+
+</div> <!-- End Stage 1: Calculate -->
