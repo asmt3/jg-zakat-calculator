@@ -1,21 +1,20 @@
-Deploying the Lambda function
-===
-	scheduled task working? Thu May 05 16:41:57 GMT+630 2016
+# Deploying the Lambda function
+This deployment process makes use of the [Node-Lambda](https://www.npmjs.com/package/node-lambda) module
 
-Preparing AWS
-===
+## Preparing AWS
+
 1. Create S3 Bucket eg. 
-	```zakat-dev-justgiving-com```
+    ```zakat-dev-justgiving-com```
 
 2. Configure S3 CORS eg.
-	```
-	<CORSConfiguration>
-		<CORSRule>
-			<AllowedOrigin>*</AllowedOrigin>
-			<AllowedMethod>GET</AllowedMethod>
-		</CORSRule>
-	</CORSConfiguration>
-	```
+    ```
+    <CORSConfiguration>
+        <CORSRule>
+            <AllowedOrigin>*</AllowedOrigin>
+            <AllowedMethod>GET</AllowedMethod>
+        </CORSRule>
+    </CORSConfiguration>
+    ```
 
 3. Create an AWS role for the lambda function with a policy document as follows:
 
@@ -41,15 +40,15 @@ Preparing AWS
 
 
 
-Preparing the deploy
-====
-0. In this directory execute ```npm install```
+## Preparing the deploy
 
-1. Install node-lambda using ```npm install -g node-lambda```
+1. In this directory execute ```npm install```
 
-2. Create a file called ```.env``` in this folder using this template, filling in the values marked with ***
+2. Install node-lambda using ```npm install -g node-lambda```
+
+3. Create a file called ```.env``` in this folder using this template, filling in the values marked with ***
 ```
-AWS_ENVIRONMENT=development
+AWS_ENVIRONMENT=production
 AWS_ACCESS_KEY_ID=***
 AWS_SECRET_ACCESS_KEY=***
 AWS_SESSION_TOKEN=
@@ -65,15 +64,15 @@ AWS_VPC_SUBNETS=
 AWS_VPC_SECURITY_GROUPS=
 EXCLUDE_GLOBS="event.json"
 PACKAGE_DIRECTORY=build
+```
 
-3. Check that everything is working by testing locally ```node-lambda run```
-4. Deploy ```node-lambda deploy```
-5. Log into AWS Console for Lambda (https://eu-west-1.console.aws.amazon.com/lambda/)
-6. Find the function 'ZakatNisabPollAndSave'
-7. Click "Test". You should get a response "Execution result: succeeded"""
+4. Check that everything is working by testing locally ```node-lambda run```
+5. Deploy ```node-lambda deploy```
+6. Log into AWS Console for Lambda (https://eu-west-1.console.aws.amazon.com/lambda/)
+7. Find the function 'ZakatNisabPollAndSave'
+8. Click "Test". You should get a response "Execution result: succeeded"""
 
-Setting up scheduling
-====
+## Setting up scheduling
 1. Log into AWS Console for Lambda (https://eu-west-1.console.aws.amazon.com/lambda/)
 2. Find the function 'ZakatNisabPollAndSave'
 3. Click "Event Sources"
