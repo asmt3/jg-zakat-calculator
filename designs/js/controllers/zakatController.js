@@ -95,8 +95,10 @@ app.controller('zakatController', function ($scope, $http, $window) {
 	// STAGE CHANGES / UI ANIMATIONS
 	$scope.showCalculator = function() {
 
-console.log($window.ga);
 		$scope.ui_stage = 'form'
+
+		// allow the two stages to displayable
+		$(".zk-stage-1, .zk-stage-2").removeClass('hidden-until-nisab-loaded')
 
 		// For debugging
 		// $scope.ui_stage = 'search'
@@ -189,27 +191,22 @@ console.log($window.ga);
 
 	// LOAD NISAB VALUES
 	function getNisabValuesByCurrency() {
-		// load nisab values
+		
+		$http.get(nisabSourceURL).success( function(response) {
 
-		var simulatedDelay = 3//000;
+			// load nisab values
+			$scope.nisab = filterNisabResponse(response)
 
-		setTimeout(function(){
+			// set default currency as the first in the list
+			$scope.selectedCurrency = $scope.nisab.currencies[0]
 
-			$http.get(nisabSourceURL).success( function(response) {
+			// show Calc
+			$scope.showCalculator()
 
-				// load nisab values
-				$scope.nisab = filterNisabResponse(response)
-
-				// set default currency as the first in the list
-				$scope.selectedCurrency = $scope.nisab.currencies[0]
-
-				// show Calc
-				$scope.showCalculator()
-
-			})
-		}, simulatedDelay)
+		})
 	}
 
+	// Augment with nisab values
 	function filterNisabResponse(response) {
 
 		var nisabValues = []
@@ -217,7 +214,6 @@ console.log($window.ga);
 		for (var i = 0; i < desiredCurrencies.length; i++) {
 			var desiredCurrency = desiredCurrencies[i]
 
-			// Augment with nisab values:
 			// first, are there any currencies with this code
 			var nisabValue = response.currencies.filter(function(currency){
 				return currency.code == desiredCurrency.code

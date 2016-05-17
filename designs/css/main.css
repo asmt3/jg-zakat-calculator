@@ -113,6 +113,7 @@ textarea {
 .zk-container .btn-primary:active,
 .zk-container .btn-primary:focus,
 .zk-container .btn-primary[disabled]:hover {background:#AC29B5; color:#fff;}
+.hidden-until-nisab-loaded {display: none}
 
 /* Header */
 .zk-banner {background:url(../img/zk-banner-mob.png) bottom center no-repeat #00C995; color:#fff; min-height:328px; text-align: center;}
@@ -191,11 +192,7 @@ textarea {
 .zk-container h3 {margin-top:8px; color:#262626;}
 
 /* Loading */
-.zk-loading {
-    padding:200px; 
-    font-size:2em; 
-    text-align: center;
-}
+.zk-loading {padding:200px; font-size:2em; text-align: center;}
 
 /* Stage 1 */
 .zk-stage-1 {padding:30px 0 0; }
