@@ -9,9 +9,10 @@ var fileinclude = require('gulp-file-include'),
 
 // Standard build
 gulp.task('default', [
-	'makestandard',
-  'makeapp',
-	'makeumbracocontainer',
+	'standard-container', 
+  'standard-app', 
+	'umbraco-container',
+  'umbraco-app',
   'copyimages',
 	'scripts',
 	'styles'
@@ -39,8 +40,9 @@ gulp.task('upload', function() {
 
 });
 
-gulp.task('makestandard', function() {
-  return gulp.src(['./src/templates/standard.html'])
+// make the standalone app with an HTML wrapper
+gulp.task('standard-container', function() {
+  return gulp.src(['./src/templates/standard-container.html'])
     .pipe(fileinclude({
       prefix: '@@',
       basepath: '@file'
@@ -48,16 +50,8 @@ gulp.task('makestandard', function() {
     .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('makeapp', function() {
-  return gulp.src(['./src/templates/app.html'])
-    .pipe(fileinclude({
-      prefix: '@@',
-      basepath: '@file'
-    }))
-    .pipe(gulp.dest('./dist/'));
-});
-
-gulp.task('makeumbracocontainer', function() {
+// make the container to be put into Umbraco
+gulp.task('umbraco-container', function() {
   return gulp.src(['./src/templates/umbraco-container.html'])
     .pipe(fileinclude({
       prefix: '@@',
@@ -65,6 +59,27 @@ gulp.task('makeumbracocontainer', function() {
     }))
     .pipe(gulp.dest('./dist/'));
 });
+
+// make the app partial that imported by Angular
+gulp.task('standard-app', function() {
+  return gulp.src(['./src/templates/standard-app.html'])
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+    .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('umbraco-app', function() {
+  return gulp.src(['./src/templates/umbraco-app.html'])
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+    .pipe(gulp.dest('./dist/'));
+});
+
+
 
 gulp.task('copyimages', function() {
    return gulp.src('./src/img/*')

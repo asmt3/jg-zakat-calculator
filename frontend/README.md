@@ -2,17 +2,20 @@
 This a single page app buit with Angular and Twitter Bootstrap, hosted on JG Umbraco.
 
 
-## Getting setup
+## Getting set up
 1. In this folder ```gulp watch``` will watch for changes and publish these to the ```dist``` folder
 2. In another console, run ```http-server``` or equivalent in the ```dist``` folder.
 
 ## Development
 Edit files in the ```src``` folder and these will be built into the ```dist```/ folder automatically by gulp.
 
-### Three templates are used for the build process
-- ```standard.html``` is the standalone page that is useful for testing locally
-- ```app.html``` is the Angular partial that is ng-included
+If you are using ```http-server```, you will find the stand-alone app here: http://127.0.0.1:8080/standard.html
+
+### Four templates are used for the build process
+- ```standard-container.html``` is the standalone page that is useful for testing locally
+- ```standard-app.html``` groups the partials for the stand alone page
 - ```umbraco-container.html``` is the HTML snippet that needs to be added to Umbraco template along with references to the compiled JS and CSS in the ```dist``` folder
+- ```umbraco-app.html``` groups the partials for the umbraco build
 
 ### Partials
 The partials in ```src/partials``` are imported into the templates by gulp during the build process
@@ -31,6 +34,10 @@ Suggested charities are included into the partials via gulp-file-include. In ```
 ```
 
 This data will be imported into the built HTML via gulp-file-include.
+
+## Changing the image base
+Currently, there is only one inline image in the HTML. The base URL this inline image can be set in ```partials/intro.html```
+
 
 ## Deployment
 1. Create a file called ```aws.json``` in this folder with the following content, filling in the values with ***.
