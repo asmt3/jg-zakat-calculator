@@ -121,9 +121,8 @@ textarea {
     width:auto;
     padding-left: 0;
     padding-right: 0;
+    margin-top: -20px;  /*to overlap the zero-width space added in the template*/
 }
-#main-content>.container::before,
-.container[role="main"]::before {content:"";}
 
 
 /* Header */

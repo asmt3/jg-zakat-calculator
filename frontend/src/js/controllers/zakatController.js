@@ -58,6 +58,9 @@ app.controller('zakatController', function ($scope, $http, $window) {
 	];
 
 
+	$scope.load() {
+		$scope.getNisabValuesByCurrency()
+	}
 
 	$scope.updateZakatCalculated = function() {
 
@@ -189,7 +192,7 @@ app.controller('zakatController', function ($scope, $http, $window) {
 
 
 	// LOAD NISAB VALUES
-	$scope.getNisabValuesByCurrency = function() {
+	var getNisabValuesByCurrency = function() {
 		
 		$http.get(nisabSourceURL).success( function(response) {
 

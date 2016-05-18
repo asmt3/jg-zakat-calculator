@@ -36,7 +36,7 @@ Suggested charities are included into the partials via gulp-file-include. In ```
 This data will be imported into the built HTML via gulp-file-include.
 
 ## Changing the image base
-Currently, there is only one inline image in the HTML. The base URL this inline image can be set in ```partials/intro.html```
+Currently, there is only one inline image in the HTML. The base URL this inline image can be set in ```templates/standard-app.html``` and ```templates/umbraco-app.html```
 
 
 ## Deployment
