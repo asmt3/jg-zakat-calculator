@@ -130,6 +130,9 @@ app.controller('zakatController', function ($scope, $http, $window) {
 	];
 
 
+	$scope.start = function() {
+		getNisabValuesByCurrency()
+	}
 
 	$scope.updateZakatCalculated = function() {
 
@@ -228,6 +231,13 @@ app.controller('zakatController', function ($scope, $http, $window) {
 
 	};
 
+	$scope.scrollToZakatOverride = function() {
+		var el = $(".zk-calculation-override");
+		var scrollTargetY = el.offset().top;
+		$("html,body").animate({scrollTop: scrollTargetY}, "slow");
+		
+	};
+
 
 
 	// SEARCH
@@ -261,7 +271,7 @@ app.controller('zakatController', function ($scope, $http, $window) {
 
 
 	// LOAD NISAB VALUES
-	$scope.getNisabValuesByCurrency = function() {
+	var getNisabValuesByCurrency = function() {
 		
 		$http.get(nisabSourceURL).success( function(response) {
 

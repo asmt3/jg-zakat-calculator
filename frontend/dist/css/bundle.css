@@ -8862,11 +8862,8 @@ textarea {
   width: auto;
   padding-left: 0;
   padding-right: 0;
-}
-
-#main-content>.container::before,
-.container[role="main"]::before {
-  content: "";
+  margin-top: -20px;
+  /*to overlap the zero-width space added in the template*/
 }
 
 /* Header */
@@ -9187,6 +9184,8 @@ textarea {
   border: 1px solid #CCC;
   border-radius: 3px;
   margin-bottom: 24px;
+  min-height: 500px;
+  background: #fff;
 }
 
 .zk-suggested-charity .zk-inner {
@@ -9194,20 +9193,22 @@ textarea {
   padding: 32px 25px;
 }
 
-.zk-suggested-charity a.zk-charity-name {
-  display: block;
-}
-
-.zk-suggested-charity img {
+.zk-suggested-charity .zk-logo {
   width: 120px;
   height: 120px;
+  margin: 0 auto;
+}
+
+.zk-suggested-charity .zk-logo img {
+  max-width: 120px;
+  max-height: 120px;
 }
 
 .zk-suggested-charity p {
   text-align: left;
 }
 
-a.zk-charity-name {
+.zk-charity-name {
   font-size: 24px;
   color: #262626;
   padding: 1em;
@@ -9216,13 +9217,11 @@ a.zk-charity-name {
 .zk-suggested-charity p.zk-charity-desc {
   font-size: 16px;
   color: #262626;
-  min-height: 140px;
 }
 
 .zk-suggested-charity p.zk-charity-reg {
   font-size: 14px;
   color: #737373;
-  min-height: 60px;
 }
 
 .zk-suggested-charity a.zk-cta {

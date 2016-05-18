@@ -279,17 +279,19 @@ textarea {
     border:1px solid #CCC;
     border-radius: 3px;
     margin-bottom: 24px;
+    min-height:500px;
+    background:#fff;
 }
 .zk-suggested-charity .zk-inner {
     background: #fff;
     padding:32px 25px;
 }
-.zk-suggested-charity a.zk-charity-name {display: block;}
-.zk-suggested-charity img {width:120px; height:120px;}
+.zk-suggested-charity .zk-logo {width:120px; height:120px; margin:0 auto;}
+.zk-suggested-charity .zk-logo img {max-width:120px; max-height:120px;}
 .zk-suggested-charity p {text-align: left; }
-a.zk-charity-name {font-size:24px; color:#262626; padding:1em;}
-.zk-suggested-charity p.zk-charity-desc {font-size:16px; color:#262626; min-height:140px;}
-.zk-suggested-charity p.zk-charity-reg {font-size:14px; color:#737373; min-height:60px;}
+.zk-charity-name {font-size:24px; color:#262626; padding:1em;}
+.zk-suggested-charity p.zk-charity-desc {font-size:16px; color:#262626; }
+.zk-suggested-charity p.zk-charity-reg {font-size:14px; color:#737373; }
 .zk-suggested-charity a.zk-cta {background: #AC29B5; width:80%; color:#fff; margin-top:32px;}
 
 .zk-charity-search-form h3 {
