@@ -8828,9 +8828,8 @@ textarea {
 
 /*General*/
 
-
-
 .zk-container {
+  background: #fff;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -8854,6 +8853,19 @@ textarea {
 
 .hidden-until-nisab-loaded {
   display: none;
+}
+
+/* Resetting some Umbraco rules */
+
+.container[role="main"] {
+  max-width: none;
+  width: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#main-content>.container::before {
+  content: "";
 }
 
 /* Header */

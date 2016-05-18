@@ -96,8 +96,8 @@ textarea {
    ========================================================================== */
 
 /*General*/
-* {}
 .zk-container {
+    background:#fff;
     font-family: 'Roboto', sans-serif;
 }
 .zk-container .btn{
@@ -114,6 +114,16 @@ textarea {
 .zk-container .btn-primary:focus,
 .zk-container .btn-primary[disabled]:hover {background:#AC29B5; color:#fff;}
 .hidden-until-nisab-loaded {display: none}
+
+/* Resetting Bootstrap rules to make work within Umbraco template */
+.container[role="main"] {
+    max-width: none;
+    width:auto;
+    padding-left: 0;
+    padding-right: 0;
+}
+#main-content>.container::before {content:"";}
+
 
 /* Header */
 .zk-banner {background:url(https://s3-eu-west-1.amazonaws.com/zakat-dev-justgiving-com/img/zk-banner-mob.png) bottom center no-repeat #00C995; color:#fff; min-height:328px; text-align: center;}

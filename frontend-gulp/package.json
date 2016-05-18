@@ -12,7 +12,9 @@
     "gulp-s3": "^0.3.0",
     "htmltidy": "0.0.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-sync": "^0.1.4"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

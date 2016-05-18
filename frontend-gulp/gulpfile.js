@@ -2,6 +2,7 @@ var fileinclude = require('gulp-file-include'),
 	concat = require('gulp-concat'),
 	concatCss = require('gulp-concat-css'),
 	gulp = require('gulp'),
+  gulpsync = require('gulp-sync')(gulp),
 	fs = require('fs'),
 	s3 = require("gulp-s3");
 
@@ -13,19 +14,23 @@ gulp.task('default', [
 	'makeumbracocontainer',
   'copyimages',
 	'scripts',
-	'styles',
-	'upload'
+	'styles'
 ]);
+
+gulp.task('publish', gulpsync.sync(['default', 'upload']))
+
 
 
 gulp.task('upload', function() {
+
+  console.log('Uploading to S3');
   aws = JSON.parse(fs.readFileSync('./aws.json'));
 
   return gulp.src('./dist/**')
         .pipe(s3(aws));
 
 });
- 
+
 gulp.task('makestandard', function() {
   return gulp.src(['./src/templates/standard.html'])
     .pipe(fileinclude({
