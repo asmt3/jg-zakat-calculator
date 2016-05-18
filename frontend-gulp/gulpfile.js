@@ -7,7 +7,7 @@ var fileinclude = require('gulp-file-include'),
 	s3 = require("gulp-s3");
 
 
-
+// Standard build
 gulp.task('default', [
 	'makestandard',
   'makeapp',
@@ -17,10 +17,18 @@ gulp.task('default', [
 	'styles'
 ]);
 
+// Build and publish to S3
 gulp.task('publish', gulpsync.sync(['default', 'upload']))
 
 
+// Watch task
+gulp.task('watch', function () {
+  gulp.watch(['src/**'], ['default']);
+});
 
+
+
+// just upload
 gulp.task('upload', function() {
 
   console.log('Uploading to S3');
