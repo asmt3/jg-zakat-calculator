@@ -126,12 +126,11 @@ textarea {
 
 
 /* Header */
-.zk-banner {background:url(../img/zk-banner-mob.png) bottom center no-repeat #00C995; color:#fff; min-height:328px; text-align: center;}
+.zk-banner {background:url(../img/zk-banner-mob.svg) bottom center no-repeat #00C995; color:#fff; min-height:328px; text-align: center;}
 
 .zk-banner h1 { font-size:40px; margin-top:22px; font-weight: normal;}
 .zk-banner p { font-size:18px; }
-.zk-banner p .logo {height:17px;}
-.zk-banner p .logo path {fill:green;}
+.zk-banner p .logo {height:22px;}
 
 .zk-intro {background:#F5F5F5; padding-top:40px; padding-bottom:40px; text-align:center; border-bottom: solid 1px #cccccc;}
 .zk-intro h2 {font-size:18px; font-weight: 300; color:#262626; margin:0 auto 25px; color:#677081; }
@@ -152,13 +151,13 @@ textarea {
     margin-bottom:12px;
 }
 .zk-step-1 p {
-    background: url(../img/steps-mob-1.png) no-repeat 42px 0px;
+    background: url(../img/steps-mob-1.svg) no-repeat 42px 0px;
 }
 .zk-step-2 p {
-    background: url(../img/steps-mob-2.png) no-repeat 42px 0px;
+    background: url(../img/steps-mob-2.svg) no-repeat 42px 0px;
 }
 .zk-step-3 p {
-    background: url(../img/steps-mob-3.png) no-repeat 42px 0px;
+    background: url(../img/steps-mob-3.svg) no-repeat 42px 0px;
 }
 .zk-cta-get-started {
     margin-top:42px;
@@ -450,7 +449,7 @@ textarea {
 }
 
 @media (min-width: 992px) {
-.zk-banner {height:356px; background-image:url(../img/zk-banner-dt.png); }
+.zk-banner {height:356px; background-image:url(../img/zk-banner-dt.svg); }
 .zk-banner h1 { font-size:60px; margin-top:130px;}
 .zk-banner p { font-size:24px; }
 

@@ -8869,7 +8869,7 @@ textarea {
 /* Header */
 
 .zk-banner {
-  background: url("../img/zk-banner-mob.png") bottom center no-repeat #00C995;
+  background: url("../img/zk-banner-mob.svg") bottom center no-repeat #00C995;
   color: #fff;
   min-height: 328px;
   text-align: center;
@@ -8886,11 +8886,7 @@ textarea {
 }
 
 .zk-banner p .logo {
-  height: 17px;
-}
-
-.zk-banner p .logo path {
-  fill: green;
+  height: 22px;
 }
 
 .zk-intro {
@@ -8928,15 +8924,15 @@ textarea {
 }
 
 .zk-step-1 p {
-  background: url("../img/steps-mob-1.png") no-repeat 42px 0px;
+  background: url("../img/steps-mob-1.svg") no-repeat 42px 0px;
 }
 
 .zk-step-2 p {
-  background: url("../img/steps-mob-2.png") no-repeat 42px 0px;
+  background: url("../img/steps-mob-2.svg") no-repeat 42px 0px;
 }
 
 .zk-step-3 p {
-  background: url("../img/steps-mob-3.png") no-repeat 42px 0px;
+  background: url("../img/steps-mob-3.svg") no-repeat 42px 0px;
 }
 
 .zk-cta-get-started {
@@ -9410,7 +9406,7 @@ textarea {
 @media (min-width: 992px) {
   .zk-banner {
     height: 356px;
-    background-image: url("../img/zk-banner-dt.png");
+    background-image: url("../img/zk-banner-dt.svg");
   }
 
   .zk-banner h1 {
