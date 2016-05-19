@@ -86,8 +86,7 @@
                 <div class="input-group">
                     <input 
                         class="form-control"
-                        charity-search 
-                        ng-model="charityQuery"
+                        ng-model="charitySearchQuery"
                         ng-change="searchCharities()"
                         type="text" 
                         placeholder="What would you like to give your Zakat to?"
@@ -118,7 +117,7 @@
                             <td class="zk-charity-logo">
                                 <div class="zk-inner">
                                     <a 
-                                        ng-href="{{ charity.SDIurl }}" 
+                                        ng-click="donateToCharity(charity.charityId)" 
                                         role="button"
                                         >
                                         <img 
@@ -132,7 +131,7 @@
                             <td class="zk-charity-name">
                                 
                                 <a 
-                                    ng-href="{{ charity.SDIurl }}" 
+                                    ng-click="donateToCharity(charity.charityId)" 
                                     role="button"
                                     >
                                     {{ charity.name }}

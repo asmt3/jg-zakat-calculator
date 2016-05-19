@@ -110,7 +110,7 @@ app.controller('zakatController', function ($scope, $http, $window) {
 
 	// charity search state
 	$scope.showCharityPicker = false;
-	$scope.charityQuery = "";
+	$scope.charitySearchQuery = "";
 	$scope.charitySearchResults = [
 		// {
 		// 	name: "Test Name of the Charity",
@@ -239,6 +239,18 @@ app.controller('zakatController', function ($scope, $http, $window) {
 	};
 
 
+	// Suggested Charity
+	$scope.donateToCharity = function(charityId){
+		var href = 'http://www.justgiving.com/4w350m3/donation/direct/charity/'
+				 + charityId + '/'
+					+ '?amount=' + $scope.formData.zakatDue
+					+ '&currency=' + $scope.selectedCurrency.name
+					+ '&reference=zakat-calc';
+
+			// redirect
+			window.location.href=href
+	}
+
 
 	// SEARCH
 	$scope.searchCharities = function() {
@@ -247,24 +259,25 @@ app.controller('zakatController', function ($scope, $http, $window) {
 		// clear results
 		$scope.charitySearchResults = [];
 
-		var url = 'https://api.justgiving.com/1d35ed50/v1/charity/search?pageSize=5&page=1&q=' + $scope.charityQuery;
+		var url = 'https://api.justgiving.com/1d35ed50/v1/charity/search?pageSize=5&page=1&q=' + this.charitySearchQuery;
+
 		$http.get(url).success( function(response) {
 
 
-			// construct SDIurl and append to results
-			angular.forEach(response.charitySearchResults, function(charity, key){
-				charity.SDIurl = 'http://www.justgiving.com/4w350m3/donation/direct/charity/'
-					+ charity.charityId + '/'
-					+ '?amount=' + $scope.formData.zakatDue
-					+ '&exitUrl=http://www.justgiving.com/'
-					+ '&currency=' + $scope.selectedCurrency.name
-					+ '&reference=zakat-calc';
+			$scope.charitySearchResults = response.charitySearchResults;
+			// // construct SDIurl and append to results
+			// angular.forEach(response.charitySearchResults, function(charity, key){
+			// 	charity.SDIurl = 'http://www.justgiving.com/4w350m3/donation/direct/charity/'
+			// 		+ charity.charityId + '/'
+			// 		+ '?amount=' + $scope.formData.zakatDue
+			// 		+ '&currency=' + $scope.selectedCurrency.name
+			// 		+ '&reference=zakat-calc';
 
 
-				$scope.charitySearchResults.push(charity);
+			// 	$scope.charitySearchResults.push(charity);
 					
 
-			});
+			// });
 		});
 
 	};

@@ -674,7 +674,7 @@
             <div 
     class="col-md-4"
     >
-    <div class="zk-suggested-charity">
+    <div class="zk-suggested-charity" ng-click="donateToCharity('186234')">
         <div class="zk-inner">
             <img src="http://images.justgiving.com/image/73f65d35-ae01-4c12-a7da-fb30065c55ae.jpg?template=size200x200" class="zk-logo">
             <h6 class="zk-charity-name">
@@ -686,14 +686,14 @@
             <p class="zk-charity-reg">
                 Registered charity number: 1126808
             </p>
-            <a class="btn zk-cta" href="'http://www.justgiving.com/4w350m3/donation/direct/charity/186234/?amount={{$scope.formData.zakatDue}}&amp;currency={{$scope.selectedCurrency.name}}&amp;reference=zakat-calc">Donate</a>
+            <a class="btn zk-cta" ng-click="donateToCharity('186234')">Donate</a>
         </div>
     </div>
 </div>
             <div 
     class="col-md-4"
     >
-    <div class="zk-suggested-charity">
+    <div class="zk-suggested-charity" ng-click="donateToCharity('224914')">
         <div class="zk-inner">
             <img src="https://images.justgiving.com/image/21bfbb81-257e-40bc-b39f-6718a262c12c.jpg?template=size200x200" class="zk-logo">
             <h6 class="zk-charity-name">
@@ -705,14 +705,14 @@
             <p class="zk-charity-reg">
                 Registered charity number: 1117924
             </p>
-            <a class="btn zk-cta" href="'http://www.justgiving.com/4w350m3/donation/direct/charity/224914/?amount={{$scope.formData.zakatDue}}&amp;currency={{$scope.selectedCurrency.name}}&amp;reference=zakat-calc">Donate</a>
+            <a class="btn zk-cta" ng-click="donateToCharity('224914')">Donate</a>
         </div>
     </div>
 </div>
             <div 
     class="col-md-4"
     >
-    <div class="zk-suggested-charity">
+    <div class="zk-suggested-charity" ng-click="donateToCharity('247680')">
         <div class="zk-inner">
             <img src="http://images.justgiving.com/image/16f77a6c-3a72-4c5d-b630-f50429c24315.jpg?template=size200x200" class="zk-logo">
             <h6 class="zk-charity-name">
@@ -724,7 +724,7 @@
             <p class="zk-charity-reg">
                 Registered charity number: 1145862
             </p>
-            <a class="btn zk-cta" href="'http://www.justgiving.com/4w350m3/donation/direct/charity/247680/?amount={{$scope.formData.zakatDue}}&amp;currency={{$scope.selectedCurrency.name}}&amp;reference=zakat-calc">Donate</a>
+            <a class="btn zk-cta" ng-click="donateToCharity('247680')">Donate</a>
         </div>
     </div>
 </div>
@@ -741,8 +741,7 @@
                 <div class="input-group">
                     <input 
                         class="form-control"
-                        charity-search 
-                        ng-model="charityQuery"
+                        ng-model="charitySearchQuery"
                         ng-change="searchCharities()"
                         type="text" 
                         placeholder="What would you like to give your Zakat to?"
@@ -773,7 +772,7 @@
                             <td class="zk-charity-logo">
                                 <div class="zk-inner">
                                     <a 
-                                        ng-href="{{ charity.SDIurl }}" 
+                                        ng-click="donateToCharity(charity.charityId)" 
                                         role="button"
                                         >
                                         <img 
@@ -787,7 +786,7 @@
                             <td class="zk-charity-name">
                                 
                                 <a 
-                                    ng-href="{{ charity.SDIurl }}" 
+                                    ng-click="donateToCharity(charity.charityId)" 
                                     role="button"
                                     >
                                     {{ charity.name }}

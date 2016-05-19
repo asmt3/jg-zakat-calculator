@@ -1,7 +1,7 @@
 <div 
     class="col-md-4"
     >
-    <div class="zk-suggested-charity">
+    <div class="zk-suggested-charity" ng-click="donateToCharity('@@charity_id')">
         <div class="zk-inner">
             <img src="@@charity_logo_url?template=size200x200" class="zk-logo">
             <h6 class="zk-charity-name">
@@ -13,7 +13,7 @@
             <p class="zk-charity-reg">
                 @@charity_reg_info
             </p>
-            <a class="btn zk-cta" href="'http://www.justgiving.com/4w350m3/donation/direct/charity/@@charity_id/?amount={{$scope.formData.zakatDue}}&amp;currency={{$scope.selectedCurrency.name}}&amp;reference=zakat-calc">Donate</a>
+            <a class="btn zk-cta" ng-click="donateToCharity('@@charity_id')">Donate</a>
         </div>
     </div>
 </div>
