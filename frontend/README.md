@@ -36,7 +36,8 @@ To make testing easier, a minimum amount of code is held in Umbraco and the majo
 3. Copy and paste in the code in ```dist/umbraco-container-and-app.html```
 4. Add images in ```dist/img``` to Umbraco
 5. Alter the image locations in the HTML and bundled CSS to match the Umbraco image locations
-6. Finito Benito
+6. In the first line of ```dist/js/all.js```, change the URL in ```nisabSourceURL``` to match the location of the nisab JSON file
+7. Finito Benito!
 
 ### Five templates are used for the build process
 - ```standard-container.html``` is the standalone page that is useful for testing locally
