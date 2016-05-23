@@ -1,19 +1,24 @@
 <div 
     class="col-md-4"
     >
-    <div class="zk-suggested-charity" ng-click="donateToCharity('@@charity_id')">
+    <div class="zk-suggested-charity" ng-click="donateToCharity('@@charity_id', '@@cause_id')">
         <div class="zk-inner">
-            <img src="@@charity_logo_url?template=size200x200" class="zk-logo">
-            <h6 class="zk-charity-name">
-                @@charity_name
-            </h6>
-            <p class="zk-charity-desc">
-                @@charity_description
-            </p>
-            <p class="zk-charity-reg">
-                @@charity_reg_info
-            </p>
-            <a class="btn zk-cta" ng-click="donateToCharity('@@charity_id')">Donate</a>
+            <div class="zk-logo">
+                <img src="@@charity_logo_url?template=size200x200">
+            </div>
+            <div class="zk-variable-height">
+                <h6 class="zk-charity-name">
+                    @@charity_name
+                </h6>
+                <p class="zk-charity-desc">
+                    @@charity_description
+                </p>
+                <p class="zk-charity-reg">
+                    @@charity_reg_info
+                </p>
+            </div>
+            
+            <a class="btn zk-cta" ng-click="donateToCharity('@@charity_id', '@@cause_id')">Donate</a>
         </div>
     </div>
 </div>

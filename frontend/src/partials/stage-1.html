@@ -63,7 +63,8 @@
                         <input
                             ng-change="updateZakatCalculated()" 
                             type="number"
-                            min="0" 
+                            min="0"
+                            placeholder="0" 
                             class="form-control"
                             id="value_au"
                             ng-model="formData.value_au"> 
@@ -82,7 +83,8 @@
                         <input
                             ng-change="updateZakatCalculated()" 
                             type="number"
-                            min="0" 
+                            min="0"
+                            placeholder="0" 
                             class="form-control"
                             id="value_ag"
                             ng-model="formData.value_ag"> 
@@ -103,7 +105,8 @@
                           <input
                             ng-change="updateZakatCalculated()" 
                             type="number"
-                            min="0" 
+                            min="0"
+                            placeholder="0" 
                             class="form-control"
                             id="cash"
                             ng-model="formData.cash">
@@ -129,7 +132,8 @@
                           <input
                             ng-change="updateZakatCalculated()" 
                             type="number"
-                            min="0" 
+                            min="0"
+                            placeholder="0" 
                             class="form-control"
                             id="other-savings"
                             ng-model="formData.otherSavings">
@@ -158,7 +162,8 @@
                           <input
                             ng-change="updateZakatCalculated()" 
                             type="number"
-                            min="0" 
+                            min="0"
+                            placeholder="0" 
                             class="form-control"
                             id="investment"
                             ng-model="formData.investment">
@@ -187,7 +192,8 @@
                           <input
                             ng-change="updateZakatCalculated()" 
                             type="number"
-                            min="0" 
+                            min="0"
+                            placeholder="0" 
                             class="form-control"
                             id="owed-in"
                             ng-model="formData.owedIn"
@@ -217,7 +223,8 @@
                       <input
                         ng-change="updateZakatCalculated()" 
                         type="number"
-                        min="0" 
+                        min="0"
+                        placeholder="0" 
                         class="form-control"
                         id="stock-value"
                         ng-model="formData.stockValue">
@@ -244,7 +251,8 @@
                       <input
                         ng-change="updateZakatCalculated()" 
                         type="number"
-                        min="0" 
+                        min="0"
+                        placeholder="0" 
                         class="form-control"
                         id="owed-out"
                         ng-model="formData.owedOut"
@@ -270,7 +278,8 @@
                       <input
                         ng-change="updateZakatCalculated()" 
                         type="number"
-                        min="0" 
+                        min="0"
+                        placeholder="0" 
                         class="form-control"
                         id="other-outgoings-due"
                         ng-model="formData.otherOutgoingsDue">
@@ -297,7 +306,6 @@
                       <input
                         ng-change="updateZakatCalculated()" 
                         type="number"
-                        min="0" 
                         readonly="readonly"
                         class="form-control"
                         ng-model="formData.netAssets" 
@@ -348,7 +356,7 @@
 
 
         <!-- Calculate CTA -->
-
+            <div class="cta">
                 <button
                     class="btn btn-primary"
                     ng-click="useZakatCalculated()"
@@ -356,6 +364,7 @@
                 >
                     Calculate your Zakat
                 </button>
+            </div>
 
 
             </div> <!-- End Zakat Form -->
@@ -429,6 +438,8 @@
                         <div class="input-group-addon" ng-bind-html="selectedCurrency.symbol"></div>
                         <input 
                             type="number" 
+                            min="0"
+                            placeholder="0"
                             format="currency"
                             class="form-control"
                             ng-model="formData.zakatOverride"
@@ -437,13 +448,15 @@
 
                     <!-- Calculation Override CTA -->
 
-                    <button 
-                        class="btn btn-primary" 
-                        ng-click="useZakatOverride()"
-                        ng-disabled=" (formData.zakatOverride <= 0) "
-                        >
-                        Continue
-                    </button>
+                    <div class="cta">
+                        <button 
+                            class="btn btn-primary" 
+                            ng-click="useZakatOverride()"
+                            ng-disabled=" (formData.zakatOverride <= 0) "
+                            >
+                            Continue
+                        </button>
+                    </div>
 
                             
                 </div>
@@ -457,6 +470,7 @@
 
 
     <!-- Suggested Charities (Stage 1) -->
+    <!--
     <div class="suggested-charities-stage-1">
 
         <div class="container">
@@ -474,7 +488,8 @@
                     "charity_name": "Al-Khair Foundation",
                     "charity_logo_url": "http://images.justgiving.com/image/73f65d35-ae01-4c12-a7da-fb30065c55ae.jpg",
                     "charity_description": "Established in 2003, we actively work in the fields of education, community cohesion and international relief work.",
-                    "charity_reg_info": "Registered charity number: 1126808"
+                    "charity_reg_info": "Registered charity number: 1126808",
+                    "cause_id":"3693842"
                 })
                 @@include('./suggested-charity-no-cta.html', {
                     "charity_id": "224914",
@@ -493,7 +508,7 @@
                 
             </div>
         </div>
-    </div> <!-- End Suggested Charities (Stage 1) -->
+    </div>--> <!-- End Suggested Charities (Stage 1) -->
 
 
 

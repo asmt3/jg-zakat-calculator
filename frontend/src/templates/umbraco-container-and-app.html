@@ -1,3 +1,12 @@
+
+<div ng-app="zakat">
+	<div
+	    ng-controller="zakatController"
+	    class="zk-container"
+	    ng-include="'https://s3-eu-west-1.amazonaws.com/zakat-dev-justgiving-com/umbraco-app.html'"
+	    ng-init="start()"
+	>
+
 @@include('../partials/top-banner.html', {
 	"images_base": "https://s3-eu-west-1.amazonaws.com/zakat-dev-justgiving-com/img"
 })
@@ -7,3 +16,8 @@
 @@include('../partials/loading.html')
 @@include('../partials/stage-1.html')
 @@include('../partials/stage-2.html')
+
+
+
+	</div> <!-- End ng-controller -->
+</div>

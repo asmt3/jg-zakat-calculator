@@ -43,13 +43,14 @@
             <a 
                 class="btn btn-primary" 
                 ng-click="getStarted()"
+                ng-show="nisab"
             >Get Started</a>
         </div>
 
         <!-- Find out more -->
         <div class="row zk-find-out-more">
             <div class="col-md-12">
-                <p>
+                <p ng-show="nisab">
                     Questions? 
                     <a 
                         target="_blank"

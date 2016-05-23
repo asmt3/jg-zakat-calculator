@@ -16,23 +16,23 @@ app.controller('zakatController', function ($scope, $http, $window) {
 	$scope.formData = {
 		
 		// assets
-		"value_au": 0, 
-		"value_ag": 0, 
-		"cash": 0,
-		"otherSavings": 0,
-		"investment": 0,
-		"owedIn": 0,
-		"stockValue": 0,
+		"value_au": "", // set to empty string to allow placeholder to show
+		"value_ag": "", 
+		"cash": "",
+		"otherSavings": "",
+		"investment": "",
+		"owedIn": "",
+		"stockValue": "",
 		
 		// liabilities
-		"owedOut": 0,
-		"otherOutgoingsDue": 0,
+		"owedOut": "",
+		"otherOutgoingsDue": "",
 
 		// final calculation
 		"netAssets": 0,
 		"nisabThreshold": 0,
 		"zakatCalculated": 0, // how much we calculate
-		"zakatOverride": 0, // their override
+		"zakatOverride": "", // their override
 		"zakatDue": 0 // the value that is shown, that they can override
 	};
 
@@ -120,11 +120,11 @@ app.controller('zakatController', function ($scope, $http, $window) {
 
 		// register events with GA
 		if ($scope.formData.selectedNisabBase == 'silver') {
-			$window.ga('send', 'event', 'zakat', 'select', 'sivlernisab');
+			$window._gaq.push(['_trackEvent', 'event', 'zakat', 'select', 'sivlernisab']);
 		} else {
-			$window.ga('send', 'event', 'zakat', 'select', 'goldnisab')	;
+			$window._gaq.push(['_trackEvent', 'event', 'zakat', 'select', 'goldnisab']);
 		}
-		$window.ga('send', 'event', 'zakat', 'click', 'calculate');
+		$window._gaq.push(['_trackEvent', 'event', 'zakat', 'click', 'calculate']);
 		
 	};
 
@@ -134,7 +134,7 @@ app.controller('zakatController', function ($scope, $http, $window) {
 		scrollToToppish(false);
 
 		// register event with GA
-		$window.ga('send', 'event', 'zakat', 'click', 'ownamount');
+		$window._gaq.push(['_trackEvent', 'event', 'zakat', 'click', 'ownamount']);
 	};
 
 	$scope.recalculate = function() {
@@ -142,7 +142,7 @@ app.controller('zakatController', function ($scope, $http, $window) {
 		scrollToToppish(true);
 
 		// register event with GA
-		$window.ga('send', 'event', 'zakat', 'click', 'recalculate');
+		$window._gaq.push(['_trackEvent', 'event', 'zakat', 'click', 'recalculate']);
 	};
 
 	function scrollToToppish(animate) {
@@ -168,15 +168,20 @@ app.controller('zakatController', function ($scope, $http, $window) {
 
 
 	// Suggested Charity
-	$scope.donateToCharity = function(charityId){
-		var href = 'http://www.justgiving.com/4w350m3/donation/direct/charity/'
-				 + charityId + '/'
-					+ '?amount=' + $scope.formData.zakatDue
-					+ '&currency=' + $scope.selectedCurrency.name
-					+ '&reference=zakat-calc';
+	$scope.donateToCharity = function(charityId, causeId){
 
-			// redirect
-			window.location.href=href
+		if(causeId) {
+			var href = 'https://www.justgiving.com/4w350m3/donate/direct/campaign/' + causeId;
+		} else {
+			var href = 'http://www.justgiving.com/4w350m3/donation/direct/charity/' + charityId;
+		}
+		
+		href += '?amount=' + $scope.formData.zakatDue
+			 + '&currency=' + this.selectedCurrency.code
+			 + '&reference=zakat-calc';
+
+		// redirect
+		window.location.href=href
 	}
 
 

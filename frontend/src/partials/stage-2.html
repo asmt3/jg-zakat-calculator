@@ -16,9 +16,10 @@
                 <div class="col-sm-6 col-xs-10">
                     <p>
                         Your Zakat value is:
-                        <span class="zakat-due">
+                        <span class="amount">
                             <span ng-bind-html="selectedCurrency.symbol"></span>{{formData.zakatDue | currency : ''}}
                         </span>
+                        
                     </p>
                 </div>
 
@@ -57,7 +58,8 @@
                 "charity_name": "Al-Khair Foundation",
                 "charity_logo_url": "http://images.justgiving.com/image/73f65d35-ae01-4c12-a7da-fb30065c55ae.jpg",
                 "charity_description": "Established in 2003, we actively work in the fields of education, community cohesion and international relief work.",
-                "charity_reg_info": "Registered charity number: 1126808"
+                "charity_reg_info": "Registered charity number: 1126808",
+                "cause_id":"3693842"
             })
             @@include('./suggested-charity-with-donate-btn.html', {
                 "charity_id": "224914",
