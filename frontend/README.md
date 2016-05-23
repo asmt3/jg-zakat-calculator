@@ -9,7 +9,7 @@ This a single page app buit with Angular and Twitter Bootstrap, hosted on JG Umb
 ## Local Development
 Edit files in the ```src``` folder and these will be built into the ```dist```/ folder automatically by gulp.
 
-If you are using ```http-server```, you will find the stand-alone app here: http://127.0.0.1:8080/standard.html
+If you are using ```http-server```, you will find the stand-alone app here: http://127.0.0.1:8080/standard-container.html
 
 ## Testing on Umbraco Staging
 To make testing easier, a minimum amount of code is held in Umbraco and the majority of the HTML, CSS and JS are hosted on S3. Changes can then be published to S3 and imported into the Umbraco at runtime via Angular.
