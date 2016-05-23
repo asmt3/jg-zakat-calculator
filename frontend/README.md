@@ -43,6 +43,7 @@ To make testing easier, a minimum amount of code is held in Umbraco and the majo
 - ```standard-app.html``` groups the partials for the stand alone page
 - ```umbraco-container.html``` is the HTML snippet that needs to be added to Umbraco template along with references to the compiled JS and CSS in the ```dist``` folder
 - ```umbraco-app.html``` groups the partials for the umbraco build
+- ```umbraco-contain-and-app.html``` is a combination of the app and a modified container. This is all the HTML in one place for easy copying and pasting into Umbraco.
 
 
 ### Partials
@@ -64,20 +65,6 @@ Suggested charities are included into the partials via gulp-file-include. In ```
 This data will be imported into the built HTML via gulp-file-include.
 
 ## Changing the image base
-Currently, there is only one inline image in the HTML. The base URL this inline image can be set in ```templates/standard-app.html``` and ```templates/umbraco-app.html```
+The base URL for inline images can be set in ```templates/standard-app.html``` and ```templates/umbraco-app.html```
 
-
-## Deployment
-1. Create a file called ```aws.json``` in this folder with the following content, filling in the values with ***.
-
-	```
-	{
-	  "key": "***",
-	  "secret": "***",
-	  "bucket": "***",
-	  "region": "eu-west-1"
-	}
-	```
-
-2. In this folder, run ```gulp publish```. This will build the files and upload them to S3
-3. Reference the compiled JS and CSS from the Umbraco template. 
+Image locations in the CSS will need to be altered manually for deployment to Prod.
