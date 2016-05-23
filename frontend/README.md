@@ -31,7 +31,7 @@ To make testing easier, a minimum amount of code is held in Umbraco and the majo
 5. Add the code in ```dist/umbraco-container.html``` to the template
 
 ## [Deploying to Umbraco production](#deploying-to-prod)
-1. Run ```gulp`` in this folder to ensure the the ```dist``` folder is up to dates
+1. Run ```gulp``` in this folder to ensure the ```dist``` folder is up-to-date
 2. Create a custom page with a custom template in Umbraco
 3. Copy and paste in the code in ```dist/umbraco-container-and-app.html```
 4. Add images in ```dist/img``` to Umbraco
