@@ -13,6 +13,7 @@ gulp.task('default', [
   'standard-app', 
 	'umbraco-container',
   'umbraco-app',
+  'umbraco-container-and-app',
   'copyimages',
 	'scripts',
 	'styles'
@@ -79,6 +80,15 @@ gulp.task('umbraco-app', function() {
     .pipe(gulp.dest('./dist/'));
 });
 
+gulp.task('umbraco-container-and-app', function() {
+  return gulp.src(['./src/templates/umbraco-container-and-app.html'])
+    .pipe(fileinclude({
+      prefix: '@@',
+      basepath: '@file'
+    }))
+    .pipe(gulp.dest('./dist/'));
+});
+
 
 
 gulp.task('copyimages', function() {
@@ -88,9 +98,6 @@ gulp.task('copyimages', function() {
 
 gulp.task('scripts', function() {
   return gulp.src([
-  	// './lib/angular/angular.js',
-  	// './lib/angular-bootstrap/ui-bootstrap-tpls.js',
-  	// './lib/angular-sanitize/angular-sanitize.js',
   	'./src/js/config.js',
   	'./src/js/main.js', 
   	'./src/js/controllers/zakatController.js']
