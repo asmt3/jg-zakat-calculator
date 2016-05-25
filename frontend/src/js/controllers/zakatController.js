@@ -120,11 +120,11 @@ app.controller('zakatController', function ($scope, $http, $window) {
 
 		// register events with GA
 		if ($scope.formData.selectedNisabBase == 'silver') {
-			$window._gaq.push(['_trackEvent', 'event', 'zakat', 'select', 'sivlernisab']);
+			$window._gaq.push(['_trackEvent', 'zakat', 'select-sivlernisab']);
 		} else {
-			$window._gaq.push(['_trackEvent', 'event', 'zakat', 'select', 'goldnisab']);
+			$window._gaq.push(['_trackEvent', 'zakat', 'select-goldnisab']);
 		}
-		$window._gaq.push(['_trackEvent', 'event', 'zakat', 'click', 'calculate']);
+		$window._gaq.push(['_trackEvent', 'zakat', 'click-calculate']);
 		
 	};
 
@@ -134,7 +134,7 @@ app.controller('zakatController', function ($scope, $http, $window) {
 		scrollToToppish(false);
 
 		// register event with GA
-		$window._gaq.push(['_trackEvent', 'event', 'zakat', 'click', 'ownamount']);
+		$window._gaq.push(['_trackEvent', 'zakat', 'click-ownamount']);
 	};
 
 	$scope.recalculate = function() {
@@ -142,7 +142,7 @@ app.controller('zakatController', function ($scope, $http, $window) {
 		scrollToToppish(true);
 
 		// register event with GA
-		$window._gaq.push(['_trackEvent', 'event', 'zakat', 'click', 'recalculate']);
+		$window._gaq.push(['_trackEvent', 'zakat', 'click-recalculate']);
 	};
 
 	function scrollToToppish(animate) {
